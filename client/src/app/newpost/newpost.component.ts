@@ -32,7 +32,7 @@ export class NewpostComponent implements OnInit {
     const date = this.newPost.controls['date'].value;
     const entry = this.newPost.controls['entry'].value;
 
- //   this.postService.savePost(new Post(0, title, smiley, date, entry)).subscribe();
+    this.postService.saveNewPost(new Post(0, title, smiley, date, entry)).subscribe();
 
 
   }
