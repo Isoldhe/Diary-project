@@ -13,6 +13,7 @@ export class RegisterService {
   constructor(private http: HttpClient) { }
 
   public saveUser(user: User) {
+    console.log(user);
     return this.http.post('http://localhost:8080/user', user)
       .pipe(
         catchError(this.errorHandler)
