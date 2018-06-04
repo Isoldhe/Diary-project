@@ -1,0 +1,40 @@
+.login-form {
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  width: 40%;
+  border: 3px solid black;
+  border-radius: 7%;
+  padding: 20px;
+  padding-bottom: 30px;
+}
+.login-form h2 {
+  color: rgb(0, 60, 158);
+  font-weight: bold;
+  text-align: center;
+}
+.login-form img {
+  display: block;
+  margin: auto;
+  width: 45%;
+}
+
+.form-group {
+  width: 100%;
+  padding: 10px;
+}
+
+.label {
+  display: inline-block;
+  font-weight: bold;
+  width: 100px;
+}
+
+.button-group {
+  width: 50%;
+  float: left;
+}
+
+.button-group p {
+  display: inline-block;
+  padding-right: 10px;
+}
