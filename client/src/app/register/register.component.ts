@@ -12,11 +12,6 @@ import {FormBuilder, Validators} from '@angular/forms';
 export class RegisterComponent implements OnInit {
   // This field is for testing. Remove if it works:
   submitted = '';
-  firstName = '';
-  lastName = '';
-  email = '';
-  username = '';
-  password = '';
 
   constructor(public fb: FormBuilder, private registerService: RegisterService) { }
 
@@ -34,19 +29,18 @@ export class RegisterComponent implements OnInit {
 
 
   public register() {
-    // After testing: put const in front of each var here, then remove instance fields
-    this.firstName = this.registerForm.controls['firstName'].value;
-    this.lastName = this.registerForm.controls['lastName'].value;
-    this.email = this.registerForm.controls['email'].value;
-    this.username = this.registerForm.controls['username'].value;
-    this.password = this.registerForm.controls['password'].value;
+    const firstName = this.registerForm.controls['firstName'].value;
+    const lastName = this.registerForm.controls['lastName'].value;
+    const email = this.registerForm.controls['email'].value;
+    const username = this.registerForm.controls['username'].value;
+    const password = this.registerForm.controls['password'].value;
 
     this.submitted = 'Form is submitted';
 
-    // this.registerService.saveUser(new User(0, firstName, lastName, email, username, password)).subscribe(
-    //   // TODO: Change this to...
-    //   // () => this.todoList.getAllTodos()
-    // );
+    this.registerService.saveUser(new User(0, firstName, lastName, email, username, password)).subscribe(
+      // TODO: Change this to...
+      // () => this.todoList.getAllTodos()
+    );
 
   }
 }
