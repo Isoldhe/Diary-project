@@ -17,7 +17,7 @@ export class NewpostComponent implements OnInit {
 
   public newPost = this.fb.group({
     title: ['', Validators.required],
-    smiley: ['', Validators.required],
+    moodbar: ['', Validators.required],
     date: ['', Validators.required],
     entry: ['', Validators.required]
   });
@@ -28,7 +28,7 @@ export class NewpostComponent implements OnInit {
   public saveNewPost(event) {
 
     const title = this.newPost.controls['title'].value;
-    const smiley = this.newPost.controls['smiley'].value;
+    const moodbar = this.newPost.controls['moodbar'].value;
     const date = this.newPost.controls['date'].value;
     const entry = this.newPost.controls['entry'].value;
 
