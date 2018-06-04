@@ -1,0 +1,9 @@
+<div>
+  <form [formGroup]="newPost" (ngSubmit)="saveNewPost($event)">
+    <input formControlName="titel" type="text" placeholder="Title">
+    <input formControlName="Moodbar" type="text" placeholder="Smiley">
+    <input formControlName="date" type="date" placeholder="01-010-2018">
+    <input formControlName="diary" type="text" placeholder="Diary entry">
+    <button type="submit">Save</button>
+  </form>
+</div>

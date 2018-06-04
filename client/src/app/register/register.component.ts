@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../models/User';
 import {RegisterService} from '../services/register.service';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -20,10 +20,6 @@ export class RegisterComponent implements OnInit {
 
   constructor(public fb: FormBuilder, private registerService: RegisterService) { }
 
-  ngOnInit() {
-  }
-
-  // Creates new form with FormBuilder
   public registerForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
@@ -31,6 +27,11 @@ export class RegisterComponent implements OnInit {
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
+
+  ngOnInit() {
+  }
+
+
 
   public register() {
     // After testing: put const in front of each var here, then remove instance fields
