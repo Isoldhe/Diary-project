@@ -10,8 +10,6 @@ import {FormBuilder, Validators} from '@angular/forms';
   providers: [RegisterService]
 })
 export class RegisterComponent implements OnInit {
-  // This field is for testing. Remove if it works:
-  submitted = '';
 
   constructor(public fb: FormBuilder, private registerService: RegisterService) { }
 
@@ -26,8 +24,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-
-
   public register() {
     const firstName = this.registerForm.controls['firstName'].value;
     const lastName = this.registerForm.controls['lastName'].value;
@@ -35,12 +31,7 @@ export class RegisterComponent implements OnInit {
     const username = this.registerForm.controls['username'].value;
     const password = this.registerForm.controls['password'].value;
 
-    this.submitted = 'Form is submitted';
-
-    this.registerService.saveUser(new User(0, firstName, lastName, email, username, password)).subscribe(
-      // TODO: Change this to...
-      // () => this.todoList.getAllTodos()
-    );
+    this.registerService.saveUser(new User(0, firstName, lastName, email, username, password)).subscribe();
 
   }
 }

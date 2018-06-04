@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
 public class UserController {
@@ -16,8 +18,20 @@ public class UserController {
 
     //curl -H "Content-Type: application/json" -X POST -d '{"id": 0, "task": "taskTest"}' http://localhost:8080/todo
     @ResponseBody
-    @RequestMapping(value = "/todo", method = RequestMethod.POST)
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
     public int create(@RequestBody User user) {
         return userService.save(user).getId();
+    }
+
+    //curl  http://localhost:8080/todo
+    @ResponseBody
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public List<User> findAll() {
+        return (List<User>)userService.findAll();
+    }
+
+    @RequestMapping(value = "/page", method = RequestMethod.GET)
+    public String page() {
+        return "user";
     }
 }
