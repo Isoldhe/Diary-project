@@ -3,13 +3,20 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
+
 import { NewpostComponent } from './newpost/newpost.component';
 import {HttpClientModule} from '@angular/common/http';
+
+import { RegisterComponent } from './register/register.component';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewpostComponent,
+    RegisterComponent,
+    NewpostComponent
   ],
   imports: [
     BrowserModule,
