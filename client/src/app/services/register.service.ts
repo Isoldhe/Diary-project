@@ -4,6 +4,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs/internal/observable/throwError";
+import {Observable} from "rxjs/internal/Observable";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,13 @@ export class RegisterService {
   public saveUser(user: User) {
     console.log(user);
     return this.http.post('http://localhost:8080/user', user)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  findAll(): Observable<User[]>  {
+    return this.http.get<User[]>('http://localhost:8080/user')
       .pipe(
         catchError(this.errorHandler)
       )

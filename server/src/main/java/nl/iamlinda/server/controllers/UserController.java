@@ -15,7 +15,6 @@ public class UserController {
 
     @Autowired private UserService userService;
 
-
     //curl -H "Content-Type: application/json" -X POST -d '{"id": 0, "task": "taskTest"}' http://localhost:8080/user
     @ResponseBody
     @RequestMapping(value = "/user", method = RequestMethod.POST)

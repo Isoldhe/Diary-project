@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {RegisterService} from "../services/register.service";
+import {User} from "../models/User";
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,9 @@ import {RegisterService} from "../services/register.service";
   providers: [RegisterService]
 })
 export class LoginComponent implements OnInit {
+
+  users: User[];
+
   constructor(public fb: FormBuilder, private registerService: RegisterService) { }
 
   public loginForm = this.fb.group({
@@ -17,6 +21,19 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit() {
+    this.getAllUsers();
+    console.log(this.users)
+  }
+
+  getAllUsers() {
+    this.registerService.findAll().subscribe(
+      users => {
+        this.users = users;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   public login() {
