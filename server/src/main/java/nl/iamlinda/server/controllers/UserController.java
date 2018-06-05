@@ -13,8 +13,6 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    // (required = false) prevents exception from being thrown which causes spring to not launch
-    //(required = false)
     @Autowired private UserService userService;
 
 

@@ -8,12 +8,14 @@ import { NewpostComponent } from './newpost/newpost.component';
 import {HttpClientModule} from '@angular/common/http';
 
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    NewpostComponent
+    NewpostComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
