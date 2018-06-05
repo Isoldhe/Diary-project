@@ -14,7 +14,7 @@ export class RegisterService {
 
   public saveUser(user: User) {
     console.log(user);
-    return this.http.post('http://localhost:8080/user', user)
+    return this.http.post('http://localhost:8080/diary', user)
       .pipe(
         catchError(this.errorHandler)
       )

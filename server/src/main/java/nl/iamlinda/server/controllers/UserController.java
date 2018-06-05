@@ -18,44 +18,44 @@ public class UserController {
     @Autowired private UserService userService;
 
 
-    //curl -H "Content-Type: application/json" -X POST -d '{"id": 0, "task": "taskTest"}' http://localhost:8080/todo
+    //curl -H "Content-Type: application/json" -X POST -d '{"id": 0, "task": "taskTest"}' http://localhost:8080/diary
     @ResponseBody
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    @RequestMapping(value = "/diary", method = RequestMethod.POST)
     public int create(@RequestBody User user) {
         return userService.save(user).getId();
     }
 
-    //curl -H "Content-Type: application/json" -X PUT -d '{"id": 1, "task": "taskTest"}' http://localhost:8080/todo/1
+    //curl -H "Content-Type: application/json" -X PUT -d '{"id": 1, "task": "taskTest"}' http://localhost:8080/diary/1
     @ResponseBody
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/diary/{id}", method = RequestMethod.PUT)
     public int updateTodo(@PathVariable  int id, @RequestBody User user) {
         return userService.save(user).getId();
     }
 
-    //curl -X DELETE http://localhost:8080/todo/1
+    //curl -X DELETE http://localhost:8080/diary/1
 //    @ResponseStatus(value = HttpStatus.OK)
-//    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
+//    @RequestMapping(value = "/diary/{id}", method = RequestMethod.DELETE)
 //    public void updateTodo(@PathVariable  int id) {
 //        userService.delete(id);
 //    }
 
-    //curl  http://localhost:8080/todo
+    //curl  http://localhost:8080/diary
     @ResponseBody
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    @RequestMapping(value = "/diary", method = RequestMethod.GET)
     public List<User> findAll() {
         return (List<User>)userService.findAll();
     }
 
-    //curl  http://localhost:8080/todo/1
+    //curl  http://localhost:8080/diary/1
 //    @ResponseBody
-//    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+//    @RequestMapping(value = "/diary/{id}", method = RequestMethod.GET)
 //    public User todoById(@PathVariable  int id) {
 //        return userService.findOne(id);
 //    }
 
     @RequestMapping(value = "/page", method = RequestMethod.GET)
     public String page() {
-        return "user";
+        return "diary";
     }
 
 
@@ -65,19 +65,19 @@ public class UserController {
 
     //curl -H "Content-Type: application/json" -X POST -d '{"id": 0, "task": "taskTest"}' http://localhost:8080/todo
 //    @ResponseBody
-//    @RequestMapping(value = "/user", method = RequestMethod.POST)
+//    @RequestMapping(value = "/diary", method = RequestMethod.POST)
 //    public int create(@RequestBody User user) {
 //        return userService.save(user).getId();
 //    }
-//    //curl  http://localhost:8080/todo
+//    //curl  http://localhost:8080/diary
 //    @ResponseBody
-//    @RequestMapping(value = "/user", method = RequestMethod.GET)
+//    @RequestMapping(value = "/diary", method = RequestMethod.GET)
 //    public List<User> findAll() {
 //        return (List<User>)userService.findAll();
 //    }
 //
 //    @RequestMapping(value = "/page", method = RequestMethod.GET)
 //    public String page() {
-//        return "user";
+//        return "diary";
 //    }
 }
