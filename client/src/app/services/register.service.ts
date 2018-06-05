@@ -20,6 +20,13 @@ export class RegisterService {
       )
   }
 
+  public authenticate(username: string, password: string) {
+    return this.http.post('http://localhost:8080/user', {username, password} )
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || "Server Error")
   }
