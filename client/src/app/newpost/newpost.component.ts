@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {PostService} from '../post.service';
-import {Post} from '../Post';
+import {PostService} from '../services/post.service';
+import {Post} from '../models/Post';
 
 @Component({
   selector: 'app-newpost',
