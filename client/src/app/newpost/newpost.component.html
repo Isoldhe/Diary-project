@@ -1,9 +1,50 @@
-<div>
-  <form [formGroup]="newPost" (ngSubmit)="saveNewPost($event)">
-    <input formControlName="title" type="text" placeholder="Title">
-    <input formControlName="smiley" type="text" placeholder="Smiley">
-    <input formControlName="date" type="text" placeholder="01-10-2018">
-    <input formControlName="entry" type="text" placeholder="Diary entry">
-    <button type="submit">Save</button>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+  <title>New Post</title>
+</head>
+<body>
+<div class="container-fluid">
+  <form [formGroup]="newPost" (ngSubmit)="saveNewPost()">
+    <div class="form-row">
+      <select formControlName="smiley" class="custom-select mr-sm-2 col form-control-lg" id="inlineFormCustomSelect">
+        <option selected>Choose...</option>
+        <option value=": D">: D</option>
+        <option value=": )">: )</option>
+        <option value=": /">: /</option>
+        <option value=">:@">>: @</option>
+        <option value=":'(">:'(</option>
+      </select>
+      <div class="col-8">
+        <input formControlName="title" type="text" class="form-control form-control-lg" placeholder="Title">
+      </div>
+      <div class="col">
+        <input formControlName="date" type="text" class="form-control form-control-lg" placeholder="Date">
+      </div>
+    </div>
+    <div class="input-group size">
+      <textarea formControlName="entry" class="form-control" rows="10" aria-label="With textarea"
+                placeholder="Entry"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Post</button>
+
   </form>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</body>
+</html>
