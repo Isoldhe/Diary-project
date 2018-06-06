@@ -4,14 +4,32 @@ import {Observable} from 'rxjs';
 import {Post} from '../models/Post';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs/internal/observable/throwError';
-import {of} from "rxjs/internal/observable/of";
+import {Subject} from "rxjs/internal/Subject";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
+  private eventCallback = new Subject<Post[]>(); // Source
+  eventCallback$ = this.eventCallback.asObservable(); // Stream
+
+  posts: Post[];
 
   constructor(private http: HttpClient) {
+
+  }
+
+  getAllPosts() {
+    this.findAll().subscribe(
+      posts => {
+        this.posts = posts;
+        console.log(this.posts);
+        this.eventCallback.next(this.posts);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   getPost(id: number): Observable<Post>  {
