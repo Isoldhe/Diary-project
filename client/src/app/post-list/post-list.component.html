@@ -15,7 +15,7 @@
 
   <div *ngFor="let post of posts" class="card" style="width: 60%;">
     <div class="card-body">
-      <h5 class="card-title">{{post.title}}</h5>
+      <a routerLink="/postdetail/{{post.id}}"><h5 class="card-title">{{post.title}}</h5></a>
       <h6 class="card-subtitle mb-2 text-muted">{{post.smiley}}      {{post.date}}</h6>
       <p class="card-text">{{post.entry}}</p>
       <button (click)="delete(post.id)" type="button" class="btn btn-secondary">Delete</button>
