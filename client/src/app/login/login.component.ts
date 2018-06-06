@@ -10,6 +10,7 @@ import {User} from "../models/User";
   providers: [RegisterService]
 })
 export class LoginComponent implements OnInit {
+  // TODO: if login is valid, redirect to HomeComponent
 
   users: User[];
 
