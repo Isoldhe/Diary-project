@@ -1,0 +1,15 @@
+<div *ngIf="post">
+
+  <h2>{{ post.title }}</h2>
+  <div><span>id: </span>{{post.id}}</div>
+  <div>
+    <form [formGroup]="editPost" (ngSubmit)="save()">
+    <label>name:
+      <textarea formControlName="entry"
+                placeholder={{post.entry}}></textarea>
+    </label>
+    <button type="submit">save</button>
+    </form>
+  </div>
+
+</div>
