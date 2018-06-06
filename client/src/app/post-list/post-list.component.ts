@@ -27,7 +27,9 @@ export class PostListComponent implements OnInit {
         console.log(err);
       }
     );
+    console.log(this.posts);
   }
+
 
   delete(id) {
     this.postService.delete(id).subscribe(

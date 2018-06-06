@@ -18,7 +18,7 @@ const routes: Routes = [
   // otherwise redirect to home (PostListComponent)
   { path: '**', redirectTo: '' }
 
-// TODO: If components have links to other components, ensure that there are links to them this in html <a> tag: routerLink="/login"
+// TODO: If components have links to other components, ensure that there are links to them in html <a> tag: routerLink="/login"
 ];
 
 @NgModule({
