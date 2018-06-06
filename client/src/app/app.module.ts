@@ -14,6 +14,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { PostDetailComponent } from './post-detail/post-detail.component';
+import { EditPostComponent } from "./edit-post/edit-post.component";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
     AppComponent,
     RegisterComponent,
     NewpostComponent,
+    EditPostComponent,
     PostListComponent,
     LoginComponent,
     PostDetailComponent

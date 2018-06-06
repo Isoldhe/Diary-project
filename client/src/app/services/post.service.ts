@@ -46,12 +46,14 @@ export class PostService {
     console.log(post);
     return this.http.post('http://localhost:8080/post/', post).pipe(
       catchError(this.errorHandler));
-
   }
 
   delete(id) {
     return this.http.delete('http://localhost:8080/post/' + id).pipe(
       catchError(this.errorHandler));
+  }
+
+  updatePost(post: Post) {
 
   }
 

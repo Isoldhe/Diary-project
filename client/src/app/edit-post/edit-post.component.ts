@@ -33,7 +33,7 @@ export class EditPostComponent implements OnInit {
 
   save(): void {
     this.postService.updatePost(this.post)
-      .subscribe();
+      // .subscribe();
   }
 
   getPost(): void {
