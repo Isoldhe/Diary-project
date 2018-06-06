@@ -1,0 +1,19 @@
+<!-- Read only component for a single diary entry -->
+<!-- TODO -->
+<!-- 1. Edit button that redirects to EditpostComponent with post details -->
+<!-- 2. Navigate buttons for previous and next posts -->
+
+
+<!--*ngIf="post"-->
+<div *ngIf="post">
+  <h2>{{ post.title }}</h2>
+  <div><p>{{ post.smiley }}</p></div>
+  <div><span>id: </span>{{post.id}}</div>
+  <div>
+    <p>{{ post.entry }}</p>
+    <!--<label>name:-->
+      <!--<input [(ngModel)]="hero.name" placeholder="name"/>-->
+    <!--</label>-->
+  </div>
+  <!--<button (click)="goBack()">go back</button>-->
+</div>

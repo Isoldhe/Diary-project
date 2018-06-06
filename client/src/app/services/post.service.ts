@@ -4,13 +4,37 @@ import {Observable} from 'rxjs';
 import {Post} from '../models/Post';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs/internal/observable/throwError';
+import {Subject} from "rxjs/internal/Subject";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
+  private eventCallback = new Subject<Post[]>(); // Source
+  eventCallback$ = this.eventCallback.asObservable(); // Stream
+
+  posts: Post[];
 
   constructor(private http: HttpClient) {
+
+  }
+
+  getAllPosts() {
+    this.findAll().subscribe(
+      posts => {
+        this.posts = posts;
+        console.log(this.posts);
+        this.eventCallback.next(this.posts);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  getPost(id: number): Observable<Post>  {
+    return this.http.get<Post>('http://localhost:8080/post/' + id).pipe(
+      catchError(this.errorHandler));
   }
 
   findAll(): Observable<Post[]>  {
@@ -19,7 +43,8 @@ export class PostService {
   }
 
   saveNewPost(post: Post) {
-    return this.http.post('http://localhost:8080/post', post).pipe(
+    console.log(post);
+    return this.http.post('http://localhost:8080/post/', post).pipe(
       catchError(this.errorHandler));
 
   }

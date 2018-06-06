@@ -12,26 +12,25 @@ export class PostListComponent implements OnInit {
 
   posts: Post[];
 
-  constructor(private postService: PostService) { }
-
-  ngOnInit() {
-    this.getAllPosts();
+  constructor(private postService: PostService) {
+    console.log('postList constructor');
+    this.postService.eventCallback$.subscribe(data => {
+      this.callbackFunction();
+    });
   }
 
-  getAllPosts() {
-    this.postService.findAll().subscribe(
-      posts => {
-        this.posts = posts;
-      },
-      err => {
-        console.log(err);
-      }
-    );
+  ngOnInit() {
+    console.log('PostListComponent ngOnInit, posts = ' + this.posts);
+    this.postService.getAllPosts();
+  }
+
+  callbackFunction() {
+    console.log("Inside MyComponent")
+    this.posts = this.postService.posts;
+    console.log('DOE HET!!!! ' + this.posts);
   }
 
   delete(id) {
-    this.postService.delete(id).subscribe(
-      () => this.getAllPosts()
-    );
+    this.postService.delete(id).subscribe();
   }
 }

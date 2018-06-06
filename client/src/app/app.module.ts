@@ -13,6 +13,7 @@ import { PostListComponent } from './post-list/post-list.component';
 
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { PostDetailComponent } from './post-detail/post-detail.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AppRoutingModule } from './/app-routing.module';
     RegisterComponent,
     NewpostComponent,
     PostListComponent,
-    LoginComponent
+    LoginComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,
