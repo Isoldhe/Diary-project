@@ -15,17 +15,15 @@ public class UserController {
 
     @Autowired private UserService userService;
 
-    //curl -H "Content-Type: application/json" -X POST -d '{"id": 0, "task": "taskTest"}' http://localhost:8080/user
     @ResponseBody
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public int create(@RequestBody User user) {
         return userService.save(user).getId();
     }
 
-    //curl -H "Content-Type: application/json" -X PUT -d '{"id": 1, "task": "taskTest"}' http://localhost:8080/user/1
     @ResponseBody
     @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
-    public int updateTodo(@PathVariable  int id, @RequestBody User user) {
+    public int update(@PathVariable  int id, @RequestBody User user) {
         return userService.save(user).getId();
     }
 
@@ -54,27 +52,4 @@ public class UserController {
     public String page() {
         return "user";
     }
-
-
-
-
-
-
-    //curl -H "Content-Type: application/json" -X POST -d '{"id": 0, "task": "taskTest"}' http://localhost:8080/todo
-//    @ResponseBody
-//    @RequestMapping(value = "/diary", method = RequestMethod.POST)
-//    public int create(@RequestBody User user) {
-//        return userService.save(user).getId();
-//    }
-//    //curl  http://localhost:8080/diary
-//    @ResponseBody
-//    @RequestMapping(value = "/diary", method = RequestMethod.GET)
-//    public List<User> findAll() {
-//        return (List<User>)userService.findAll();
-//    }
-//
-//    @RequestMapping(value = "/page", method = RequestMethod.GET)
-//    public String page() {
-//        return "diary";
-//    }
 }

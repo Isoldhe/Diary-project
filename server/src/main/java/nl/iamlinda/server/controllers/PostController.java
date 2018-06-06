@@ -29,7 +29,7 @@ public class PostController {
 
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping(value = "/post/{id}", method = RequestMethod.DELETE)
-    public void updateTodo(@PathVariable  int id) {
+    public void update(@PathVariable  int id) {
         postService.deleteById(id);
     }
 }
