@@ -32,10 +32,6 @@ export class PostService {
     );
   }
 
-  getPostByFind(id: number): Post {
-    return this.posts.find(post => post.id === id);
-  }
-
   getPost(id: number): Observable<Post>  {
     return this.http.get<Post>('http://localhost:8080/post/' + id).pipe(
       catchError(this.errorHandler));
@@ -43,6 +39,11 @@ export class PostService {
 
   findAll(): Observable<Post[]>  {
     return this.http.get<Post[]>('http://localhost:8080/post').pipe(
+      catchError(this.errorHandler));
+  }
+
+  findById(id: number): Observable<Post>  {
+    return this.http.get<Post>('http://localhost:8080/post/' + id).pipe(
       catchError(this.errorHandler));
   }
 

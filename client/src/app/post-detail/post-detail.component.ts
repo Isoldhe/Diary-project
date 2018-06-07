@@ -23,12 +23,14 @@ export class PostDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Don't remove:
     this.postService.getAllPosts();
   }
 
   callbackFunction() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.post = this.postService.getPostByFind(id);
+
+    this.postService.findById(id).subscribe(post => this.post = post);
   }
 
 }
