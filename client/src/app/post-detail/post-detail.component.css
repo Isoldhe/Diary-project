@@ -1,0 +1,33 @@
+.post {
+  line-height: 1.7em;
+}
+
+.post-nav {
+  display: inline-block;
+  margin: auto;
+  width: 75%;
+  height: 60px;
+}
+.post-nav p {
+  display: inline-block;
+}
+.post-nav img {
+  vertical-align: middle;
+  padding-bottom: 3px;
+  display: inline-block;
+  width: 100px;
+}
+
+.post-nav-left {
+  float: left;
+}
+.post-nav-left p {
+  padding-left: 15px;
+}
+
+.post-nav-right {
+  float: right;
+}
+.post-nav-right p {
+  padding-right: 15px;
+}

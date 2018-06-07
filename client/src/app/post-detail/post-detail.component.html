@@ -4,10 +4,23 @@
 <!-- 2. Navigate buttons for previous and next posts -->
 
 
+<div class="post-nav">
+  <div class="post-nav-left">
+    <img alt="previous post" src="../../assets/img/arrow-left.png">
+    <p>Previous post</p>
+  </div>
+
+  <div class="post-nav-right">
+    <p>next post</p>
+    <img alt="next post" src="../../assets/img/arrow-right.png">
+  </div>
+</div>
+
 <div *ngIf="post">
   <h2>Title: {{ post.title }}</h2>
-  <div><p>Mood: {{ post.smiley }}</p></div>
-  <div><span>Postid: </span>{{post.id}}</div>
+  <p>Mood: {{ post.smiley }}</p>
+  <p>Postid: {{post.id}}</p>
+  <p>Date: {{ post.date }}</p>
   <div>
     <p>Entry: {{ post.entry }}</p>
   </div>
