@@ -18,7 +18,11 @@ export class EditPostComponent implements OnInit {
     public fb: FormBuilder,
     private route: ActivatedRoute,
     private postService: PostService,
-  ) {}
+  ) {
+    this.postService.eventCallback$.subscribe(data => {
+      this.callbackFunction();
+    });
+  }
 
   public editPost = this.fb.group({
     title: ['', Validators.required],
@@ -28,18 +32,21 @@ export class EditPostComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.getPost();
+    this.postService.getAllPosts();
   }
 
-  save(): void {
-    this.postService.updatePost(this.post)
-      // .subscribe();
+  save(event) {
+
+    this.post.title = this.editPost.controls['title'].value;
+    this.post.smiley = this.editPost.controls['smiley'].value;
+    this.post.date = this.editPost.controls['date'].value;
+    this.post.entry = this.editPost.controls['entry'].value;
+    console.log(this.post.entry)
+    this.postService.updatePost(this.post.id, this.post);
   }
 
-  getPost(): void {
+  callbackFunction() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.postService.getPost(id)
-      .subscribe(post => this.post = post);
+    this.post = this.postService.getPostByFind(id);
   }
-
 }

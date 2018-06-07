@@ -57,8 +57,11 @@ export class PostService {
       catchError(this.errorHandler));
   }
 
-  updatePost(post: Post) {
-
+  updatePost(id, post: Post) {
+    console.log('in updatepost' + id + post)
+    return this.http.put('http://localhost:8080/post/' + id, post).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   errorHandler(error: HttpErrorResponse) {
