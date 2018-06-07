@@ -35,8 +35,10 @@ public class UserController {
 //    }
 
 //    Implementation of UserService findByEmail method
-    public void findByEmail(String email) {
-        List<User> users = userService.findByEmail(email);
+    @ResponseBody
+    @RequestMapping(value = "/user/{email}", method = RequestMethod.GET)
+    public List<User> findByEmail(@PathVariable String email) {
+        return userService.findByEmail(email);
     }
 
     //curl  http://localhost:8080/user
