@@ -25,9 +25,8 @@ export class PostListComponent implements OnInit {
   }
 
   callbackFunction() {
-    console.log("Inside MyComponent")
     this.posts = this.postService.posts;
-    console.log('DOE HET!!!! ' + this.posts);
+    console.log('DOE HET in PostList!!!! ' + this.posts);
   }
 
   delete(id) {

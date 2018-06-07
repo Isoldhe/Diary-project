@@ -8,30 +8,27 @@ import {Post} from "../models/Post";
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
-  styleUrls: ['./post-detail.component.css']
+  styleUrls: ['./post-detail.component.css'],
+  providers: [PostService]
 })
 export class PostDetailComponent implements OnInit {
   @Input() post: Post;
 
-  posts: Post[];
-
   constructor(private route: ActivatedRoute,
               private postService: PostService,
-              private location: Location) { }
-
-  ngOnInit() {
-    this.getPost();
-  // FIXME: getPost returns as undefined
-    console.log('getPost = ' + this.getPost());
+              private location: Location) {
+    this.postService.eventCallback$.subscribe(data => {
+      this.callbackFunction();
+    });
   }
 
+  ngOnInit() {
+    this.postService.getAllPosts();
+  }
 
-  getPost(): void {
+  callbackFunction() {
     const id = +this.route.snapshot.paramMap.get('id');
-    console.log('id = ' + id)
-    this.postService.getPost(id)
-      .subscribe(post => this.post = post);
-    console.log(this.post);
+    this.post = this.postService.getPostByFind(id);
   }
 
 }
