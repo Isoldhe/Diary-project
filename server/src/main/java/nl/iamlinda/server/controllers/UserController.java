@@ -34,6 +34,11 @@ public class UserController {
 //        userService.delete(id);
 //    }
 
+//    Implementation of UserService findByEmail method
+    public void findByEmail(String email) {
+        List<User> users = userService.findByEmail(email);
+    }
+
     //curl  http://localhost:8080/user
     @ResponseBody
     @RequestMapping(value = "/user", method = RequestMethod.GET)

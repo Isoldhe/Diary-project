@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ea5cf44-4d49-4dca-9ebf-c5f53d4ccfcb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/arrow-left.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/arrow-right.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/post-detail/post-detail.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/post-detail/post-detail.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/app/post-detail/post-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/post-detail/post-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/services/UserService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/server/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,20 +17,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="post-detail.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/src/app/post-detail/post-detail.component.html">
+      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/services/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+            <state relative-caret-position="119">
+              <caret line="13" column="90" selection-start-line="13" selection-start-column="90" selection-end-line="13" selection-end-column="90" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="post-detail.component.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/post-detail/post-detail.component.css">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/controllers/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+            <state relative-caret-position="306">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="e#1196#1197#0" expanded="true" />
+                <element signature="e#1272#1273#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/models/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -65,12 +78,10 @@
         <option value="$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/models/User.java" />
         <option value="$PROJECT_DIR$/client/src/app/register/register.component.ts" />
         <option value="$PROJECT_DIR$/server/pom.xml" />
-        <option value="$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/services/UserService.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/ServerApplication.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/services/PostService.java" />
         <option value="$PROJECT_DIR$/client/src/app/services/register.service.ts" />
         <option value="$PROJECT_DIR$/client/src/app/login/login.component.ts" />
-        <option value="$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/controllers/UserController.java" />
         <option value="$PROJECT_DIR$/client/src/app/newpost/newpost.component.ts" />
         <option value="$PROJECT_DIR$/server/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/controllers/PostController.java" />
@@ -81,13 +92,15 @@
         <option value="$PROJECT_DIR$/client/src/app/post-detail/post-detail.component.ts" />
         <option value="$PROJECT_DIR$/client/src/app/services/post.service.ts" />
         <option value="$PROJECT_DIR$/client/src/app/post-list/post-list.component.html" />
-        <option value="$PROJECT_DIR$/client/src/index.html" />
         <option value="$PROJECT_DIR$/client/src/app/register/register.component.html" />
         <option value="$PROJECT_DIR$/client/src/app/login/login.component.html" />
         <option value="$PROJECT_DIR$/client/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/client/src/app/newpost/newpost.component.html" />
         <option value="$PROJECT_DIR$/client/src/app/post-detail/post-detail.component.css" />
+        <option value="$PROJECT_DIR$/client/src/index.html" />
         <option value="$PROJECT_DIR$/client/src/app/post-detail/post-detail.component.html" />
+        <option value="$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/services/UserService.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/controllers/UserController.java" />
       </list>
     </option>
   </component>
@@ -131,39 +144,6 @@
             <path>
               <item name="Dagboek project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Dagboek project" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Dagboek project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Dagboek project" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Dagboek project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Dagboek project" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Dagboek project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Dagboek project" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Dagboek project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Dagboek project" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Dagboek project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Dagboek project" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Dagboek project" type="b2602c69:ProjectViewProjectNode" />
@@ -343,12 +323,12 @@
       <workItem from="1528271717245" duration="7586000" />
       <workItem from="1528283273435" duration="10351000" />
       <workItem from="1528294451170" duration="164000" />
-      <workItem from="1528354083104" duration="4319000" />
+      <workItem from="1528354083104" duration="5493000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61776000" />
+    <option name="totallyTimeSpent" value="62950000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -584,20 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/models/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/services/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app/models/User.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -642,13 +608,6 @@
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/controllers/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
@@ -737,13 +696,6 @@
     <entry file="file://$PROJECT_DIR$/client/src/app/login/login.component.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app/edit-post/edit-post.component.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -787,10 +739,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/post-detail/post-detail.component.html">
+    <entry file="file://$PROJECT_DIR$/client/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/post-detail/post-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/services/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="90" selection-start-line="13" selection-start-column="90" selection-end-line="13" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/iamlinda/server/controllers/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#1196#1197#0" expanded="true" />
+            <element signature="e#1272#1273#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
