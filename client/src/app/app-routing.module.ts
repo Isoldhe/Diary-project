@@ -7,7 +7,7 @@ import {PostListComponent} from "./post-list/post-list.component";
 import {PostDetailComponent} from "./post-detail/post-detail.component";
 import {EditPostComponent} from "./edit-post/edit-post.component";
 
-// We still need to add more routes and edit the components, so they refer to the correct paths
+// TODO: We still need to add more routes and edit the components, so they refer to the correct paths
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
