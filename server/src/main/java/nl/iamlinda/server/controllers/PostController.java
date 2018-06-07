@@ -44,20 +44,25 @@ public class PostController {
 //        } else {
 //            System.out.println("hoi");
 //            return 0;
-//        }
+      }
 
+
+    @GetMapping("/post/{id}")
+    public Post get(@PathVariable("id") int id) {
+//        Checks if Post with this id is present and then returns that Post
+        if( postService.findById(id).isPresent() ) {
+            return postService.findById(id).get();
+        }
+        else {
+//            If the Post is not present, returns a new empty Post
+            return new Post();
+        }
     }
 
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping(value = "/post/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable  int id) {
         postService.deleteById(id);
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
-    public void get(@PathVariable  int id) {
-        postService.findById(id);
     }
 }
 

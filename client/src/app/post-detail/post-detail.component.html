@@ -5,14 +5,19 @@
 
 
 <div class="post-nav">
-  <div *ngIf="post.id > 1" class="post-nav-left">
-    <img alt="previous post" src="../../assets/img/arrow-left.png">
-    <p>Previous post</p>
+  <!-- *ngIf="post..." prevents console errors -->
+  <div *ngIf="post && post.id > 1" class="post-nav-left">
+    <a *ngIf="post" routerLink="/postdetail/{{post.id - 1}}" role="button">
+      <img alt="previous post" src="../../assets/img/arrow-left.png">
+      <p>Previous post</p>
+    </a>
   </div>
 
   <div class="post-nav-right">
-    <p>next post</p>
-    <img alt="next post" src="../../assets/img/arrow-right.png">
+    <a *ngIf="post" routerLink="/postdetail/{{post.id + 1}}" role="button">
+      <p>next post</p>
+      <img alt="next post" src="../../assets/img/arrow-right.png">
+    </a>
   </div>
 </div>
 

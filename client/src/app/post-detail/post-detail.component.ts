@@ -15,20 +15,24 @@ export class PostDetailComponent implements OnInit {
   @Input() post: Post;
 
   constructor(private route: ActivatedRoute,
-              private postService: PostService,
-              private location: Location) {
+              private postService: PostService) {
     this.postService.eventCallback$.subscribe(data => {
       this.callbackFunction();
     });
   }
 
   ngOnInit() {
+    // Don't remove:
     this.postService.getAllPosts();
   }
 
   callbackFunction() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.post = this.postService.getPostByFind(id);
+
+    this.postService.findById(id).subscribe(post => this.post = post);
   }
+
+//  TODO: methods nextPost() and previousPost() for navigating through post views
+//  Edit routlink in html for this
 
 }
