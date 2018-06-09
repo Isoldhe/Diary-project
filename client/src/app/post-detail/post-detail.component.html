@@ -2,6 +2,16 @@
 <!-- TODO -->
 <!-- 1. Edit button that redirects to EditpostComponent with post details -->
 <!-- 2. Navigate buttons for previous and next posts -->
+<div class="button-group">
+  <a routerLink="/login" class="btn btn-primary" role="button">Logout</a>
+</div>
+<div class="button-group">
+  <a routerLink="/home" class="btn btn-primary" role="button">Home</a>
+</div>
+<div class="button-group">
+  <a routerLink="/newpost" class="btn btn-primary" role="button">Add new post</a>
+</div>
+
 <div class="post-nav">
   <!-- *ngIf="post..." prevents console errors -->
   <div *ngIf="post && post.id > 1" class="post-nav-left">
