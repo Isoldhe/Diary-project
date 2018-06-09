@@ -23,7 +23,7 @@ export class PostService {
     this.findAll().subscribe(
       posts => {
         this.posts = posts;
-        console.log(this.posts);
+        console.log('getAllPost van PostService = ' + this.posts);
         this.eventCallback.next(this.posts);
       },
       err => {

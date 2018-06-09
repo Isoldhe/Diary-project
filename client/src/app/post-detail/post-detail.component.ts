@@ -23,13 +23,16 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
     // Don't remove:
+    console.log('ngOnInit of PostDetail');
     this.postService.getAllPosts();
   }
 
   callbackFunction() {
+    console.log('in callback of postdetail');
     const id = +this.route.snapshot.paramMap.get('id');
 
     this.postService.findById(id).subscribe(post => this.post = post);
+    console.log('this.post after callling findById = ' + this.post);
   }
 
 //  TODO: methods nextPost() and previousPost() for navigating through post views

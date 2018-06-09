@@ -46,7 +46,7 @@ public class PostController {
 //            return 0;
       }
 
-
+    @ResponseBody
     @GetMapping("/post/{id}")
     public Post get(@PathVariable("id") int id) {
 //        Checks if Post with this id is present and then returns that Post
