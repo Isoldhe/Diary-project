@@ -35,18 +35,17 @@ export class EditPostComponent implements OnInit {
     this.postService.getAllPosts();
   }
 
-  save(event) {
+  save() {
 
     this.post.title = this.editPost.controls['title'].value;
     this.post.smiley = this.editPost.controls['smiley'].value;
     this.post.date = this.editPost.controls['date'].value;
     this.post.entry = this.editPost.controls['entry'].value;
-    console.log(this.post.entry)
-    this.postService.updatePost(this.post.id, this.post);
+    this.postService.updatePost(this.post.id, this.post).subscribe();
   }
 
   callbackFunction() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.post = this.postService.getPostByFind(id);
-  }
+
+    this.postService.findById(id).subscribe(post => this.post = post);  }
 }

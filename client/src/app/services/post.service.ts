@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {Post} from '../models/Post';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs/internal/observable/throwError';
-import {Subject} from "rxjs/internal/Subject";
+import {Subject} from 'rxjs/internal/Subject';
 
 @Injectable({
   providedIn: 'root'
@@ -58,8 +58,8 @@ export class PostService {
       catchError(this.errorHandler));
   }
 
-  updatePost(id, post: Post) {
-    console.log('in updatepost' + id + post)
+  updatePost(id: number, post: Post) {
+    console.log('in updatepost' + id + post);
     return this.http.put('http://localhost:8080/post/' + id, post).pipe(
       catchError(this.errorHandler)
     );

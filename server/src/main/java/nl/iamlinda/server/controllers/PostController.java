@@ -31,8 +31,9 @@ public class PostController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/post/{id}", method = RequestMethod.PUT)
-    public int updatePost(@PathVariable  int id, @RequestBody Post post) {
+    @PutMapping(value = "/post/{id}")
+    public int updatePost(@PathVariable("id")  int id, @RequestBody Post post) {
+        System.out.println("in put");
  //       if( postService.findById(id).isPresent() ) {
             Post postOld = postService.findById(id).get();
             postOld.setTitle(post.getTitle());
@@ -46,9 +47,10 @@ public class PostController {
 //            return 0;
       }
 
-
+    @ResponseBody
     @GetMapping("/post/{id}")
     public Post get(@PathVariable("id") int id) {
+        System.out.println("in get");
 //        Checks if Post with this id is present and then returns that Post
         if( postService.findById(id).isPresent() ) {
             return postService.findById(id).get();
