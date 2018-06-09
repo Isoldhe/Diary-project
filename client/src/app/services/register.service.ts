@@ -53,13 +53,15 @@ export class RegisterService {
   public authenticate(username: string, password: string) {
 
     try {
-      // If this.user is empty, throws an error which will be caught
+      // If this.user is empty, because it couldn't find a user with this username, it throws an error which will be caught
       this.user = this.users.find(u => u.username == username);
       console.log('found user = ' + this.user.username + ' with password = ' + this.user.password);
 
       if(this.user.username == username) {
           if(this.user.password == password) {
-            console.log('password is correct!');
+            localStorage.setItem('currentUser', JSON.stringify(this.user));
+
+            console.log('In register.service: currentUser = ' + localStorage.getItem('currentUser'));
             this.router.navigate(['/home']);
           } else {
             // TODO: add alert message that user can see

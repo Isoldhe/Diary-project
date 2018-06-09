@@ -29,13 +29,23 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.registerService.getAllUsers();
     console.log(this.users)
+
+    this.logout();
+    console.log('In login: currentUser = ' + localStorage.getItem('currentUser'));
   }
 
-  public login() {
+  login() {
     const username = this.loginForm.controls['username'].value;
     const password = this.loginForm.controls['password'].value;
 
     this.registerService.authenticate(username, password);
+  }
+
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+
+    console.log('logout done. currentUser = ' + localStorage.getItem('currentUser'));
   }
 
   callbackFunction() {

@@ -6,6 +6,7 @@ import {NewpostComponent} from "./newpost/newpost.component";
 import {PostListComponent} from "./post-list/post-list.component";
 import {PostDetailComponent} from "./post-detail/post-detail.component";
 import {EditPostComponent} from "./edit-post/edit-post.component";
+import {AuthGuard} from "./guards/auth.guard";
 
 // TODO: We still need to add more routes and edit the components, so they refer to the correct paths
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'newpost', component:  NewpostComponent},
   { path: 'postdetail/:id', component:  PostDetailComponent},
   { path: 'editpost/:id', component:  EditPostComponent},
-  { path: 'home', component: PostListComponent },
+  { path: 'home', component: PostListComponent, canActivate: [AuthGuard] },
   { path: '', component: LoginComponent},
 
   // otherwise redirect to home (PostListComponent)
