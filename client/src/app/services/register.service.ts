@@ -1,17 +1,39 @@
 import { Injectable } from '@angular/core';
 import {User} from "../models/User";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import { Router } from '@angular/router';
 
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs/internal/observable/throwError";
 import {Observable} from "rxjs/internal/Observable";
+import {Subject} from "rxjs/internal/Subject";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
+  private eventCallback = new Subject<User[]>(); // Source
+  eventCallback$ = this.eventCallback.asObservable(); // Stream
 
-  constructor(private http: HttpClient) { }
+  users: User[];
+
+  user: User;
+
+  constructor(private http: HttpClient,
+              private router: Router) { }
+
+  getAllUsers() {
+    this.findAll().subscribe(
+      users => {
+        this.users = users;
+        console.log(this.users);
+        this.eventCallback.next(this.users);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 
   public saveUser(user: User) {
     console.log(user);
@@ -29,10 +51,31 @@ export class RegisterService {
   }
 
   public authenticate(username: string, password: string) {
-    return this.http.post('http://localhost:8080/user', {username, password} )
-      .pipe(
-        catchError(this.errorHandler)
-      )
+
+    try {
+      // If this.user is empty, because it couldn't find a user with this username, it throws an error which will be caught
+      this.user = this.users.find(u => u.username == username);
+      console.log('found user = ' + this.user.username + ' with password = ' + this.user.password);
+
+      if(this.user.username == username) {
+          if(this.user.password == password) {
+            localStorage.setItem('currentUser', JSON.stringify(this.user));
+
+            console.log('In register.service: currentUser = ' + localStorage.getItem('currentUser'));
+            // Login successful and AuthGuard's canActivate() returns true, so redirect to /home
+            this.router.navigate(['/home']);
+          } else {
+            // Login was not successful
+            // TODO: add alert message that user can see
+            console.log('password is incorrect');
+          }
+      }
+
+    } catch(error) {
+      // TODO: add alert message that user can see
+      console.log('Username does not exist');
+      this.errorHandler(error);
+    }
   }
 
   errorHandler(error: HttpErrorResponse) {

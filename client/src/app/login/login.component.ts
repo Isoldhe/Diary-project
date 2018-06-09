@@ -14,7 +14,12 @@ export class LoginComponent implements OnInit {
 
   users: User[];
 
-  constructor(public fb: FormBuilder, private registerService: RegisterService) { }
+  constructor(public fb: FormBuilder, private registerService: RegisterService) {
+    console.log('Login constructor');
+    this.registerService.eventCallback$.subscribe(data => {
+      this.callbackFunction();
+    });
+  }
 
   public loginForm = this.fb.group({
     username: ['', Validators.required],
@@ -22,26 +27,29 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.getAllUsers();
+    this.registerService.getAllUsers();
     console.log(this.users)
+
+    this.logout();
+    console.log('In login: currentUser = ' + localStorage.getItem('currentUser'));
   }
 
-  getAllUsers() {
-    this.registerService.findAll().subscribe(
-      users => {
-        this.users = users;
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
-
-  public login() {
+  login() {
     const username = this.loginForm.controls['username'].value;
     const password = this.loginForm.controls['password'].value;
 
-    this.registerService.authenticate(username, password).subscribe();
+    this.registerService.authenticate(username, password);
+  }
 
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+
+    console.log('logout done. currentUser = ' + localStorage.getItem('currentUser'));
+  }
+
+  callbackFunction() {
+    this.users = this.registerService.users;
+    console.log('DOE HET in Login!!!! ' + this.users);
   }
 }

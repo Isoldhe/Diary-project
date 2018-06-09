@@ -27,13 +27,6 @@ public class UserController {
         return userService.save(user).getId();
     }
 
-    //curl -X DELETE http://localhost:8080/user/1
-//    @ResponseStatus(value = HttpStatus.OK)
-//    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
-//    public void updateTodo(@PathVariable  int id) {
-//        userService.delete(id);
-//    }
-
 //    Implementation of UserService findByEmail method
     @ResponseBody
     @RequestMapping(value = "/user/{email}", method = RequestMethod.GET)
@@ -47,13 +40,6 @@ public class UserController {
     public List<User> findAll() {
         return (List<User>)userService.findAll();
     }
-
-    //curl  http://localhost:8080/user/1
-//    @ResponseBody
-//    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-//    public User todoById(@PathVariable  int id) {
-//        return userService.findOne(id);
-//    }
 
     @RequestMapping(value = "/page", method = RequestMethod.GET)
     public String page() {

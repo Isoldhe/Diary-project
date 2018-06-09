@@ -46,6 +46,6 @@ export class EditPostComponent implements OnInit {
 
   callbackFunction() {
     const id = +this.route.snapshot.paramMap.get('id');
-
     this.postService.findById(id).subscribe(post => this.post = post);  }
+
 }
