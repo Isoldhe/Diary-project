@@ -62,8 +62,10 @@ export class RegisterService {
             localStorage.setItem('currentUser', JSON.stringify(this.user));
 
             console.log('In register.service: currentUser = ' + localStorage.getItem('currentUser'));
+            // Login successful and AuthGuard's canActivate() returns true, so redirect to /home
             this.router.navigate(['/home']);
           } else {
+            // Login was not successful
             // TODO: add alert message that user can see
             console.log('password is incorrect');
           }
