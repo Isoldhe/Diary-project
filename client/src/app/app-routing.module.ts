@@ -14,10 +14,11 @@ const routes: Routes = [
   { path: 'newpost', component:  NewpostComponent},
   { path: 'postdetail/:id', component:  PostDetailComponent},
   { path: 'editpost/:id', component:  EditPostComponent},
-  { path: '', component: PostListComponent },
+  { path: 'home', component: PostListComponent },
+  { path: '', component: LoginComponent},
 
   // otherwise redirect to home (PostListComponent)
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'home' }
 
 // TODO: If components have links to other components, ensure that there are links to them in html <a> tag: routerLink="/login"
 ];

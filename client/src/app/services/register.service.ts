@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {User} from "../models/User";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import { Router } from '@angular/router';
 
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs/internal/observable/throwError";
@@ -18,7 +19,8 @@ export class RegisterService {
 
   user: User;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private router: Router) { }
 
   getAllUsers() {
     this.findAll().subscribe(
@@ -49,8 +51,27 @@ export class RegisterService {
   }
 
   public authenticate(username: string, password: string) {
-    this.user = this.users.find(u => u.username == username);
-    console.log('found user = ' + this.user.username + ' with password = ' + this.user.password);
+
+    try {
+      // If this.user is empty, throws an error which will be caught
+      this.user = this.users.find(u => u.username == username);
+      console.log('found user = ' + this.user.username + ' with password = ' + this.user.password);
+
+      if(this.user.username == username) {
+          if(this.user.password == password) {
+            console.log('password is correct!');
+            this.router.navigate(['/home']);
+          } else {
+            // TODO: add alert message that user can see
+            console.log('password is incorrect');
+          }
+      }
+
+    } catch(error) {
+      // TODO: add alert message that user can see
+      console.log('Username does not exist');
+      this.errorHandler(error);
+    }
   }
 
   errorHandler(error: HttpErrorResponse) {

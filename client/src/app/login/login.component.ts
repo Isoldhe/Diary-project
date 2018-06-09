@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
     const password = this.loginForm.controls['password'].value;
 
     this.registerService.authenticate(username, password);
-
   }
 
   callbackFunction() {
