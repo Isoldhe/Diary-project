@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
   })
 
 export class NewpostComponent implements OnInit {
-
+  user: string;
 
   constructor(public fb: FormBuilder,
               private postService: PostService,
@@ -26,6 +26,9 @@ export class NewpostComponent implements OnInit {
   });
 
   ngOnInit() {
+    this.user = localStorage.getItem('currentUser');
+    console.log('the user in NewpostComponent = ' + this.user);
+    console.log(this.user[0]);
   }
 
   public saveNewPost(event) {

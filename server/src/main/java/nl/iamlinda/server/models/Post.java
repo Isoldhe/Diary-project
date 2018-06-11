@@ -5,6 +5,7 @@ import org.hibernate.annotations.Table;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 public class Post implements Serializable {
@@ -16,9 +17,21 @@ public class Post implements Serializable {
     private String date;
     private String entry;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     public Post() {}
 
     public Post(int id, String title, String smiley, String date, String entry) {}
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getId() {
         return id;
@@ -58,6 +71,24 @@ public class Post implements Serializable {
 
     public void setEntry(String entry) {
         this.entry = entry;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Post post = (Post) o;
+        return id == post.id &&
+                Objects.equals(title, post.title) &&
+                Objects.equals(smiley, post.smiley) &&
+                Objects.equals(date, post.date) &&
+                Objects.equals(entry, post.entry) &&
+                Objects.equals(user, post.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, smiley, date, entry, user);
     }
 
     @Override

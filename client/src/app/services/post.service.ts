@@ -5,6 +5,8 @@ import {Post} from '../models/Post';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs/internal/observable/throwError';
 import {Subject} from 'rxjs/internal/Subject';
+import {User} from "../models/User";
+import {RegisterService} from "./register.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +17,12 @@ export class PostService {
 
   posts: Post[];
 
-  constructor(private http: HttpClient) {
+  // user: User;
 
+  constructor(private http: HttpClient,
+              private registerService: RegisterService) {
+    // this.user = this.registerService.user;
+    // console.log('the user of registerService in PostService = ' + this.user);
   }
 
   getAllPosts() {
@@ -45,7 +51,7 @@ export class PostService {
     return this.http.get<Post>('http://localhost:8080/post/' + id).pipe(
       catchError(this.errorHandler));
   }
-
+  //userid: number,
   saveNewPost(post: Post) {
     console.log(post);
     return this.http.post('http://localhost:8080/post/', post).pipe(

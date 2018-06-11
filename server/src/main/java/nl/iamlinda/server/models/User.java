@@ -1,6 +1,8 @@
 package nl.iamlinda.server.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -13,6 +15,9 @@ public class User {
     String username;
     String password;
 
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts = new ArrayList<>();
+
     public User() {}
 
     public User(int id, String firstName, String lastName, String email, String username, String password) {
@@ -22,6 +27,14 @@ public class User {
         this.email = email;
         this.username = username;
         this.password = password;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     public int getId() {

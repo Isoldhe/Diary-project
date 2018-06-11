@@ -20,6 +20,7 @@ public class PostController {
     @ResponseBody
     @RequestMapping(value = "/post", method = RequestMethod.POST)
     public int create(@RequestBody Post post) {
+        System.out.println("Creating post");
         return postService.save(post).getId();
     }
 
