@@ -12,13 +12,13 @@ public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String title;
     private String smiley;
     private String date;
     private String entry;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private User user;
 
     public Post() {}
@@ -71,24 +71,6 @@ public class Post implements Serializable {
 
     public void setEntry(String entry) {
         this.entry = entry;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Post post = (Post) o;
-        return id == post.id &&
-                Objects.equals(title, post.title) &&
-                Objects.equals(smiley, post.smiley) &&
-                Objects.equals(date, post.date) &&
-                Objects.equals(entry, post.entry) &&
-                Objects.equals(user, post.user);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, smiley, date, entry, user);
     }
 
     @Override

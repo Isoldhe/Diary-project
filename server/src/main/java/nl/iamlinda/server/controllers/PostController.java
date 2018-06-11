@@ -2,6 +2,7 @@ package nl.iamlinda.server.controllers;
 
 import nl.iamlinda.server.services.PostService;
 import nl.iamlinda.server.models.*;
+import nl.iamlinda.server.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -16,11 +17,21 @@ import java.util.Optional;
 public class PostController {
 
     @Autowired private PostService postService;
+    @Autowired private UserService userService;
 
     @ResponseBody
-    @RequestMapping(value = "/post", method = RequestMethod.POST)
+    @RequestMapping(value = "/post/", method = RequestMethod.POST)
     public int create(@RequestBody Post post) {
         System.out.println("Creating post");
+
+        if( userService.findById(1).isPresent() ) {
+            User currentUser = userService.findById(1).get();
+            post.setUser(currentUser);
+        }
+        else {
+//            If the Post is not present, returns a new empty Post
+            return 0;
+        }
         return postService.save(post).getId();
     }
 

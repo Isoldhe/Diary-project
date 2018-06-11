@@ -17,12 +17,7 @@ export class PostService {
 
   posts: Post[];
 
-  // user: User;
-
-  constructor(private http: HttpClient,
-              private registerService: RegisterService) {
-    // this.user = this.registerService.user;
-    // console.log('the user of registerService in PostService = ' + this.user);
+  constructor(private http: HttpClient) {
   }
 
   getAllPosts() {

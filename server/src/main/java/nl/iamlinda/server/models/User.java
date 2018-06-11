@@ -9,14 +9,15 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
+
     String firstName;
     String lastName;
     String email;
     String username;
     String password;
 
-    @OneToMany(mappedBy = "user")
-    private List<Post> posts = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Post> posts;
 
     public User() {}
 
