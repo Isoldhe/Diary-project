@@ -16,6 +16,7 @@ public class User {
     String username;
     String password;
 
+    // Hibernate attempt
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Post> posts;
 
@@ -30,10 +31,10 @@ public class User {
         this.password = password;
     }
 
+    // Hibernate attempt
     public List<Post> getPosts() {
         return posts;
     }
-
     public void setPosts(List<Post> posts) {
         this.posts = posts;
     }

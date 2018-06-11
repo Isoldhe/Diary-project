@@ -17,6 +17,8 @@ export class PostService {
 
   posts: Post[];
 
+  user: User;
+
   constructor(private http: HttpClient) {
   }
 
@@ -24,6 +26,7 @@ export class PostService {
     this.findAll().subscribe(
       posts => {
         this.posts = posts;
+        console.log('this.posts van PostService = ', this.posts);
         this.eventCallback.next(this.posts);
       },
       err => {
@@ -32,13 +35,21 @@ export class PostService {
     );
   }
 
+  getCurrentUser() {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    // this.user = localStorage.getItem('currentUser');
+    console.log('the user in NewpostComponent = ' + this.user);
+    console.log(this.user.id);
+  }
+
   getPost(id: number): Observable<Post>  {
     return this.http.get<Post>('http://localhost:8080/post/' + id).pipe(
       catchError(this.errorHandler));
   }
 
   findAll(): Observable<Post[]>  {
-    return this.http.get<Post[]>('http://localhost:8080/post').pipe(
+    this.getCurrentUser();
+    return this.http.get<Post[]>('http://localhost:8080/postByUserId/' + this.user.id).pipe(
       catchError(this.errorHandler));
   }
 
@@ -46,10 +57,11 @@ export class PostService {
     return this.http.get<Post>('http://localhost:8080/post/' + id).pipe(
       catchError(this.errorHandler));
   }
-  //userid: number,
+
   saveNewPost(post: Post) {
+    this.getCurrentUser();
     console.log(post);
-    return this.http.post('http://localhost:8080/post/', post).pipe(
+    return this.http.post('http://localhost:8080/post/' + this.user.id, post).pipe(
       catchError(this.errorHandler));
   }
 
