@@ -33,18 +33,13 @@ public class PostController {
     @ResponseBody
     @PutMapping(value = "/post/{id}")
     public int updatePost(@PathVariable("id")  int id, @RequestBody Post post) {
-        System.out.println("in put");
- //       if( postService.findById(id).isPresent() ) {
-            Post postOld = postService.findById(id).get();
-            postOld.setTitle(post.getTitle());
-            postOld.setSmiley(post.getSmiley());
-            postOld.setDate(post.getDate());
-            postOld.setEntry(post.getEntry());
-            System.out.println(postOld.getEntry());
-            return postService.save(postOld).getId();
-//        } else {
-//            System.out.println("hoi");
-//            return 0;
+        Post postOld = postService.findById(id).get();
+        postOld.setTitle(post.getTitle());
+        postOld.setSmiley(post.getSmiley());
+        postOld.setDate(post.getDate());
+        postOld.setEntry(post.getEntry());
+        System.out.println(postOld.getEntry());
+        return postService.save(postOld).getId();
       }
 
     @ResponseBody
