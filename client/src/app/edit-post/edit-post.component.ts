@@ -36,7 +36,6 @@ export class EditPostComponent implements OnInit {
   }
 
   save() {
-
     this.post.title = this.editPost.controls['title'].value;
     this.post.smiley = this.editPost.controls['smiley'].value;
     this.post.date = this.editPost.controls['date'].value;
