@@ -26,7 +26,6 @@ export class PostService {
     this.findAll(user_id).subscribe(
       posts => {
         this.posts = posts;
-        console.log('this.posts in PostService = ' + this.posts);
         this.eventCallback.next(this.posts);
       },
       err => {

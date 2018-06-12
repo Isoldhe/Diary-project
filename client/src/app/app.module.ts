@@ -12,7 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { PostListComponent } from './post-list/post-list.component';
 
 import { LoginComponent } from './login/login.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../models/User';
 import {RegisterService} from '../services/register.service';
 import {FormBuilder, Validators} from '@angular/forms';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,9 @@ import {FormBuilder, Validators} from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public fb: FormBuilder, private registerService: RegisterService) { }
+  constructor(public fb: FormBuilder,
+              private registerService: RegisterService,
+              private router: Router) { }
 
   public registerForm = this.fb.group({
     firstName: ['', Validators.required],
@@ -33,5 +36,7 @@ export class RegisterComponent implements OnInit {
 
     this.registerService.saveUser(new User(0, firstName, lastName, email, username, password)).subscribe();
 
+    // Adding routerlink here, because it doesn't work in html
+    this.router.navigate(['/login']);
   }
 }
