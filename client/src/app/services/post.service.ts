@@ -5,6 +5,7 @@ import {Post} from '../models/Post';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs/internal/observable/throwError';
 import {Subject} from 'rxjs/internal/Subject';
+import {User} from "../models/User";
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,13 @@ export class PostService {
   }
 
   getAllPosts() {
-    this.findAll().subscribe(
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const user_id = currentUser.id;
+
+    this.findAll(user_id).subscribe(
       posts => {
         this.posts = posts;
+        console.log('this.posts in PostService = ' + this.posts);
         this.eventCallback.next(this.posts);
       },
       err => {
@@ -35,18 +40,18 @@ export class PostService {
       catchError(this.errorHandler));
   }
 
-  findAll(): Observable<Post[]>  {
-    return this.http.get<Post[]>('http://localhost:8080/post').pipe(
+  findAll(id: number): Observable<Post[]>  {
+    return this.http.get<Post[]>('http://localhost:8080/post/' + id).pipe(
       catchError(this.errorHandler));
   }
 
   findById(id: number): Observable<Post>  {
-    return this.http.get<Post>('http://localhost:8080/post/' + id).pipe(
+    return this.http.get<Post>('http://localhost:8080/postdetail/' + id).pipe(
       catchError(this.errorHandler));
   }
 
   saveNewPost(post: Post) {
-    console.log(post);
+    console.log('saved post = ' + post);
     return this.http.post('http://localhost:8080/post/', post).pipe(
       catchError(this.errorHandler));
   }

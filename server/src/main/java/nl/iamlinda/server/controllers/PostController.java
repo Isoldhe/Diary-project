@@ -25,10 +25,10 @@ public class PostController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/post", method = RequestMethod.GET)
-    public List<Post> findAll() {
+    @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
+    public List<Post> findAll(@PathVariable("id")  int id) {
         System.out.println("in the findAll() method of PostController!!!");
-        return (List<Post>)postService.findAll();
+        return (List<Post>)postService.findByUserId(id);
     }
 
     @ResponseBody
@@ -44,7 +44,7 @@ public class PostController {
       }
 
     @ResponseBody
-    @GetMapping("/post/{id}")
+    @GetMapping("/postdetail/{id}")
     public Post get(@PathVariable("id") int id) {
         System.out.println("in get");
 //        Checks if Post with this id is present and then returns that Post

@@ -41,6 +41,8 @@ export class NewpostComponent implements OnInit {
     const entry = this.newPost.controls['entry'].value;
     const user_id = this.currentUser.id;
 
+    console.log('currentUser id = ' + user_id);
+
     this.postService.saveNewPost(new Post(0, title, smiley, date, entry, user_id)).subscribe();
 
     // Adding routerlink here, because it doesn't work in html

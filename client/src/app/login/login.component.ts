@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(public fb: FormBuilder, private registerService: RegisterService) {
     this.registerService.eventCallback$.subscribe(data => {
+      console.log('eventCallBack login');
       this.callbackFunction();
     });
   }
@@ -25,7 +26,9 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit() {
+    console.log('ngOnInit before getAllUsers');
     this.registerService.getAllUsers();
+    console.log('ngOnInit after getAllUsers');
     console.log(this.users)
 
     this.logout();
@@ -44,6 +47,8 @@ export class LoginComponent implements OnInit {
   }
 
   callbackFunction() {
+    console.log('callbackfunction login');
     this.users = this.registerService.users;
+    console.log('users = ' + this.users);
   }
 }
