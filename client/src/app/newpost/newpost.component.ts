@@ -42,13 +42,6 @@ export class NewpostComponent implements OnInit {
     const entry = this.newPost.controls['entry'].value;
     const user_id = this.currentUser.id;
 
-    this.postService.saveNewPost(new Post(0, title, smiley, date, entry, user_id)).subscribe();
-
-    // Delaying to get updated allPosts in PostList back in sync
-    setTimeout(() =>
-      {
-        this.router.navigate(['/home']);
-      },
-      100);
+    this.postService.saveNewPost(new Post(0, title, smiley, date, entry, user_id)).subscribe(() => this.router.navigate(['/home']));
   }
 }

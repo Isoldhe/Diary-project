@@ -34,14 +34,7 @@ export class PostListComponent implements OnInit {
   }
 
   delete(id) {
-    this.postService.delete(id).subscribe();
-
-    // Delaying to get updated allPosts back in sync
-    setTimeout(() =>
-      {
-        this.postService.getAllPosts();
-      },
-      100);
+    this.postService.delete(id).subscribe(() => this.postService.getAllPosts());
   }
 
 
