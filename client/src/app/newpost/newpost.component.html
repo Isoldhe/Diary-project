@@ -1,17 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" style="width: 100%;">
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Home</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav mr-auto justify-content-end" style="width: 100%;">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login" role="button">Logout</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<div class="button-group">
+  <a routerLink="/login" class="btn btn-primary" role="button">Logout</a>
+</div>
+<div class="button-group">
+  <a routerLink="/home" class="btn btn-primary" role="button">Home</a>
+</div>
 
 <div class="container-fluid">
   <form [formGroup]="newPost" (ngSubmit)="saveNewPost()">
@@ -28,7 +20,7 @@
         <input formControlName="title" type="text" class="form-control form-control-lg" placeholder="Title">
       </div>
       <div class="col">
-        <input formControlName="date" type="date" class="form-control form-control-lg" placeholder="Date">
+        <input formControlName="date" type="date" class="form-control form-control-lg">
       </div>
     </div>
     <div class="input-group size">
