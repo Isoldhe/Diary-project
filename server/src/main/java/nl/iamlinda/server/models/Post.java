@@ -18,6 +18,7 @@ public class Post implements Serializable {
     private String date;
     private String entry;
 
+    // Hibernate attempt
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private User user;
 
@@ -25,10 +26,10 @@ public class Post implements Serializable {
 
     public Post(int id, String title, String smiley, String date, String entry) {}
 
+    // Hibernate attempt
     public User getUser() {
         return user;
     }
-
     public void setUser(User user) {
         this.user = user;
     }

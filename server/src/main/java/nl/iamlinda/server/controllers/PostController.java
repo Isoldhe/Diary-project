@@ -17,15 +17,20 @@ import java.util.Optional;
 public class PostController {
 
     @Autowired private PostService postService;
+
+    // Hibernate attempt
     @Autowired private UserService userService;
 
     @ResponseBody
-    @RequestMapping(value = "/post/", method = RequestMethod.POST)
-    public int create(@RequestBody Post post) {
+    @RequestMapping(value = "/post/{userId}", method = RequestMethod.POST)
+    public int create(@RequestBody Post post, @PathVariable("userId") int userId) {
         System.out.println("Creating post");
+        System.out.println("userId = " + userId);
 
-        if( userService.findById(1).isPresent() ) {
-            User currentUser = userService.findById(1).get();
+        // Hibernate attempt
+        if( userService.findById(userId).isPresent() ) {
+            User currentUser = userService.findById(userId).get();
+            System.out.println("CurrentUser = " + currentUser);
             post.setUser(currentUser);
         }
         else {
@@ -40,6 +45,12 @@ public class PostController {
     public List<Post> findAll() {
         System.out.println("in the findAll() method of PostController!!!");
         return (List<Post>)postService.findAll();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/postByUserId/{userId}", method = RequestMethod.GET)
+    public List<Post> findAllByUserId(@PathVariable int userId) {
+        return postService.findAllByUserId(userId);
     }
 
     @ResponseBody
