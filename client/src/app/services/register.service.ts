@@ -55,13 +55,11 @@ export class RegisterService {
     try {
       // If this.user is empty, because it couldn't find a user with this username, it throws an error which will be caught
       this.user = this.users.find(u => u.username == username);
-      console.log('found user = ' + this.user.username + ' with password = ' + this.user.password);
 
       if(this.user.username == username) {
           if(this.user.password == password) {
             localStorage.setItem('currentUser', JSON.stringify(this.user));
 
-            console.log('In register.service: currentUser = ' + localStorage.getItem('currentUser'));
             // Login successful and AuthGuard's canActivate() returns true, so redirect to /home
             this.router.navigate(['/home']);
           } else {

@@ -10,12 +10,10 @@ import {User} from "../models/User";
   providers: [RegisterService]
 })
 export class LoginComponent implements OnInit {
-  // TODO: if login is valid, redirect to HomeComponent
 
   users: User[];
 
   constructor(public fb: FormBuilder, private registerService: RegisterService) {
-    console.log('Login constructor');
     this.registerService.eventCallback$.subscribe(data => {
       this.callbackFunction();
     });
@@ -31,7 +29,6 @@ export class LoginComponent implements OnInit {
     console.log(this.users)
 
     this.logout();
-    console.log('In login: currentUser = ' + localStorage.getItem('currentUser'));
   }
 
   login() {
@@ -44,12 +41,9 @@ export class LoginComponent implements OnInit {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-
-    console.log('logout done. currentUser = ' + localStorage.getItem('currentUser'));
   }
 
   callbackFunction() {
     this.users = this.registerService.users;
-    console.log('DOE HET in Login!!!! ' + this.users);
   }
 }

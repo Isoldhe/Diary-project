@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '../services/post.service';
 import {Post} from '../models/Post';
+import {User} from "../models/User";
 
 @Component({
   selector: 'app-post-list',
@@ -10,7 +11,13 @@ import {Post} from '../models/Post';
 })
 export class PostListComponent implements OnInit {
 
-  posts: Post[];
+  // All posts in DB
+  allPosts: Post[];
+
+  // filtered posts on user_id
+  currentUserPosts: Post[];
+
+  currentUser: User;
 
   constructor(private postService: PostService) {
     this.postService.eventCallback$.subscribe(data => {
@@ -20,10 +27,13 @@ export class PostListComponent implements OnInit {
 
   ngOnInit() {
     this.postService.getAllPosts();
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   callbackFunction() {
-    this.posts = this.postService.posts;
+    this.allPosts = this.postService.posts;
+    this.currentUserPosts = this.allPosts.filter(
+      post => post.user_id === this.currentUser.id);
   }
 
   delete(id) {

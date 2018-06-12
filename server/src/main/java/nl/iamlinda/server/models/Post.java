@@ -15,10 +15,11 @@ public class Post implements Serializable {
     private String smiley;
     private String date;
     private String entry;
+    private int user_id;
 
     public Post() {}
 
-    public Post(int id, String title, String smiley, String date, String entry) {}
+    public Post(int id, String title, String smiley, String date, String entry, int user_id) {}
 
     public int getId() {
         return id;
@@ -60,6 +61,14 @@ public class Post implements Serializable {
         this.entry = entry;
     }
 
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
@@ -68,6 +77,7 @@ public class Post implements Serializable {
                 ", smiley='" + smiley + '\'' +
                 ", date='" + date + '\'' +
                 ", entry='" + entry + '\'' +
+                ", user_id=" + user_id +
                 '}';
     }
 }
