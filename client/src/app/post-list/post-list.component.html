@@ -1,9 +1,20 @@
-<div class="button-group">
-  <a routerLink="/login" class="btn btn-primary" role="button">Logout</a>
-</div>
-<div class="button-group">
-  <a routerLink="/newpost" class="btn btn-primary" role="button">Add new post</a>
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" style="width: 100%;">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/newpost" role="button">Add new post</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto justify-content-end" style="width: 100%;">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login" role="button">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <div class="container-fluid">
 
