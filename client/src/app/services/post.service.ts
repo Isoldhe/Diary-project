@@ -16,7 +16,6 @@ export class PostService {
   posts: Post[];
 
   constructor(private http: HttpClient) {
-
   }
 
   getAllPosts() {

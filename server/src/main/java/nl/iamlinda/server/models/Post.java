@@ -5,12 +5,14 @@ import org.hibernate.annotations.Table;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String title;
     private String smiley;
     private String date;
