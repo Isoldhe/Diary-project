@@ -47,8 +47,6 @@ export class LoginComponent implements OnInit {
   }
 
   callbackFunction() {
-    console.log('callbackfunction login');
     this.users = this.registerService.users;
-    console.log('users = ' + this.users);
   }
 }

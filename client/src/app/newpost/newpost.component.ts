@@ -5,6 +5,7 @@ import {Post} from '../models/Post';
 import {Router} from "@angular/router";
 import {RegisterService} from "../services/register.service";
 import {User} from "../models/User";
+import {delay} from "rxjs/operators";
 
 @Component({
   selector: 'app-newpost',
@@ -41,11 +42,6 @@ export class NewpostComponent implements OnInit {
     const entry = this.newPost.controls['entry'].value;
     const user_id = this.currentUser.id;
 
-    console.log('currentUser id = ' + user_id);
-
-    this.postService.saveNewPost(new Post(0, title, smiley, date, entry, user_id)).subscribe();
-
-    // Adding routerlink here, because it doesn't work in html
-    this.router.navigate(['/home']);
+    this.postService.saveNewPost(new Post(0, title, smiley, date, entry, user_id)).subscribe(() => this.router.navigate(['/home']));
   }
 }
