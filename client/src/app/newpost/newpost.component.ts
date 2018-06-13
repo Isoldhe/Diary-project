@@ -5,7 +5,6 @@ import {Post} from '../models/Post';
 import {Router} from "@angular/router";
 import {RegisterService} from "../services/register.service";
 import {User} from "../models/User";
-import {delay} from "rxjs/operators";
 
 @Component({
   selector: 'app-newpost',
@@ -15,6 +14,7 @@ import {delay} from "rxjs/operators";
   })
 
 export class NewpostComponent implements OnInit {
+  submitted = false;
 
   currentUser: User;
 
@@ -35,12 +35,21 @@ export class NewpostComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
+  // convenience getter for easy access to form fields
+  get f() { return this.newPost.controls; }
+
   public saveNewPost(event) {
-    const title = this.newPost.controls['title'].value;
-    const smiley = this.newPost.controls['smiley'].value;
-    const date = this.newPost.controls['date'].value;
-    const entry = this.newPost.controls['entry'].value;
+    const title = this.f['title'].value;
+    const smiley = this.f['smiley'].value;
+    const date = this.f['date'].value;
+    const entry = this.f['entry'].value;
     const user_id = this.currentUser.id;
+
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.newPost.invalid) {
+      return;
+    }
 
     this.postService.saveNewPost(new Post(0, title, smiley, date, entry, user_id)).subscribe(() => this.router.navigate(['/home']));
   }

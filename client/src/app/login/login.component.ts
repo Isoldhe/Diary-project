@@ -10,6 +10,7 @@ import {User} from "../models/User";
   providers: [RegisterService]
 })
 export class LoginComponent implements OnInit {
+  submitted = false;
 
   users: User[];
 
@@ -26,17 +27,24 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit() {
-    console.log('ngOnInit before getAllUsers');
     this.registerService.getAllUsers();
-    console.log('ngOnInit after getAllUsers');
     console.log(this.users)
 
     this.logout();
   }
 
+  // convenience getter for easy access to form fields
+  get f() { return this.loginForm.controls; }
+
   login() {
-    const username = this.loginForm.controls['username'].value;
-    const password = this.loginForm.controls['password'].value;
+    const username = this.f['username'].value;
+    const password = this.f['password'].value;
+
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+      return;
+    }
 
     this.registerService.authenticate(username, password);
   }

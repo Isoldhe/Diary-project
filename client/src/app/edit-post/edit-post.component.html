@@ -16,29 +16,46 @@
   </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="post">
   <form [formGroup]="editPost" (ngSubmit)="save()">
     <div class="form-row">
-      <select formControlName="smiley" class="custom-select mr-sm-2 col form-control-lg" id="inlineFormCustomSelect">
-        <option selected>Choose...</option>
-        <option value=": D">: D</option>
-        <option value=": )">: )</option>
-        <option value=": /">: /</option>
-        <option value=">:@">>: @</option>
-        <option value=":'(">:'(</option>
-      </select>
+      <div class="col">
+        <select formControlName="smiley" class="custom-select mr-sm-2 col form-control-lg" id="inlineFormCustomSelect"
+                [ngClass]="{ 'is-invalid': submitted && f.smiley.errors }">
+          <option selected>{{post.smiley}}</option>
+          <option value=": D">: D</option>
+          <option value=": )">: )</option>
+          <option value=": /">: /</option>
+          <option value=">:@">>: @</option>
+          <option value=":'(">:'(</option>
+        </select>
+        <div *ngIf="submitted && f.smiley.errors" class="invalid-feedback">
+          <div *ngIf="f.smiley.errors.required">Smiley is required</div>
+        </div>
+      </div>
       <div class="col-8">
-        <input formControlName="title" type="text" class="form-control form-control-lg" value="{{post.title}}">
+        <input formControlName="title" type="text" class="form-control form-control-lg" value="{{post.title}}"
+               [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+          <div *ngIf="f.title.errors.required">Title is required</div>
+        </div>
       </div>
       <div class="col">
-        <input formControlName="date" type="text" class="form-control form-control-lg" value="{{post.date}}">
+        <input formControlName="date" type="date" class="form-control form-control-lg" value="{{post.date}}"
+               [ngClass]="{ 'is-invalid': submitted && f.date.errors }">
+        <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+          <div *ngIf="f.date.errors.required">Date is required</div>
+        </div>
       </div>
     </div>
     <div class="input-group size">
       <textarea formControlName="entry" class="form-control" rows="10" aria-label="With textarea"
-                value="{{post.entry}}"></textarea>
+                value="{{post.entry}}" [ngClass]="{ 'is-invalid': submitted && f.entry.errors }"></textarea>
+      <div *ngIf="submitted && f.entry.errors" class="invalid-feedback">
+        <div *ngIf="f.entry.errors.required">Entry is required</div>
+      </div>
     </div>
-    <button routerLink="/home" type="submit" class="btn btn-primary">Post</button>
+    <button type="submit" class="btn btn-primary">Post</button>
 
   </form>
 </div>

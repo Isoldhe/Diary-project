@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
   providers: [RegisterService]
 })
 export class RegisterComponent implements OnInit {
+  submitted = false;
 
   constructor(public fb: FormBuilder,
               private registerService: RegisterService,
@@ -19,20 +20,29 @@ export class RegisterComponent implements OnInit {
   public registerForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', Validators.required, Validators.email],
     username: ['', Validators.required],
-    password: ['', Validators.required]
+    password: ['', Validators.required, Validators.minLength(5)]
   });
 
   ngOnInit() {
   }
 
+  // convenience getter for easy access to form fields
+  get f() { return this.registerForm.controls; }
+
   public register() {
-    const firstName = this.registerForm.controls['firstName'].value;
-    const lastName = this.registerForm.controls['lastName'].value;
-    const email = this.registerForm.controls['email'].value;
-    const username = this.registerForm.controls['username'].value;
-    const password = this.registerForm.controls['password'].value;
+    const firstName = this.f['firstName'].value;
+    const lastName = this.f['lastName'].value;
+    const email = this.f['email'].value;
+    const username = this.f['username'].value;
+    const password = this.f['password'].value;
+
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    }
 
     this.registerService.saveUser(new User(0, firstName, lastName, email, username, password)).subscribe();
 
