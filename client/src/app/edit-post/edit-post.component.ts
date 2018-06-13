@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {PostService} from '../services/post.service';
 import {Post} from '../models/Post';
 import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../models/User';
 
 @Component({
   selector: 'app-edit-post',
@@ -13,6 +14,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class EditPostComponent implements OnInit, OnChanges {
   submitted = false;
   editPost: FormGroup;
+  currentUser: User;
 
   @Input() post: Post;
 
@@ -38,6 +40,7 @@ export class EditPostComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.postService.getAllPosts();
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   // Tracks changes in the form

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {PostService} from '../services/post.service';
 import {Post} from '../models/Post';
+import {User} from '../models/User';
 
 @Component({
   selector: 'app-post-detail',
@@ -13,6 +14,7 @@ import {Post} from '../models/Post';
 })
 export class PostDetailComponent implements OnInit {
   @Input() post: Post;
+  currentUser: User;
 
   constructor(private route: ActivatedRoute,
               private postService: PostService) {
@@ -24,6 +26,7 @@ export class PostDetailComponent implements OnInit {
   ngOnInit() {
     // Don't remove:
     this.postService.getAllPosts();
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   callbackFunction() {
