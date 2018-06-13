@@ -1,9 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {PostService} from '../services/post.service';
 import {Post} from '../models/Post';
 import {ActivatedRoute, Router} from '@angular/router';
-import {User} from "../models/User";
 
 @Component({
   selector: 'app-edit-post',
@@ -11,8 +10,9 @@ import {User} from "../models/User";
   styleUrls: ['./edit-post.component.css'],
   providers: [PostService]
 })
-export class EditPostComponent implements OnInit {
+export class EditPostComponent implements OnInit, OnChanges {
   submitted = false;
+  editPost: FormGroup;
 
   @Input() post: Post;
 
@@ -27,24 +27,37 @@ export class EditPostComponent implements OnInit {
     });
   }
 
-  public editPost = this.fb.group({
-    title: ['', Validators.required],
-    smiley: ['', Validators.required],
-    date: ['', Validators.required],
-    entry: ['', Validators.required]
-  });
+  createForm() {
+    this.editPost = this.fb.group({
+        title: ['', Validators.required],
+        smiley: ['', Validators.required],
+        date: ['', Validators.required],
+        entry: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
     this.postService.getAllPosts();
-    console.log('getAllPost uit Edit Post = ' + this.postService.posts);
+  }
+
+  // Tracks changes in the form
+  ngOnChanges() {
+    this.rebuildForm();
+  }
+
+  rebuildForm() {
+    this.editPost.reset({
+      smiley: this.post.smiley,
+      title: this.post.title,
+      date: this.post.date,
+      entry: this.post.entry
+    });
   }
 
   // convenience getter for easy access to form fields
   get f() { return this.editPost.controls; }
 
   save() {
-    console.log('in save');
-    console.log('Title vanuit editPost form-control = ' + this.f['title'].value);
     this.post.title = this.f['title'].value;
     this.post.smiley = this.f['smiley'].value;
     this.post.date = this.f['date'].value;
@@ -53,7 +66,6 @@ export class EditPostComponent implements OnInit {
     this.submitted = true;
     // stop here if form is invalid
     if (this.editPost.invalid) {
-      console.log('Form is not valid');
       return;
     }
 
@@ -62,6 +74,11 @@ export class EditPostComponent implements OnInit {
 
   callbackFunction() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.postService.findById(id).subscribe(post => this.post = post);  }
+    // When the post is found (findById), load it in the view with createForm() and rebuildForm()
+    this.postService.findById(id).subscribe(post => {this.post = post;
+                                                          this.createForm();
+                                                          this.rebuildForm();
+                                                          });
+  }
 
 }

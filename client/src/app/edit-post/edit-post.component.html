@@ -34,14 +34,14 @@
         </div>
       </div>
       <div class="col-8">
-        <input formControlName="title" type="text" class="form-control form-control-lg" value="{{post.title}}"
+        <input formControlName="title" type="text" class="form-control form-control-lg"
                [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
         <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
           <div *ngIf="f.title.errors.required">Title is required</div>
         </div>
       </div>
       <div class="col">
-        <input formControlName="date" type="date" class="form-control form-control-lg" value="{{post.date}}"
+        <input formControlName="date" type="date" class="form-control form-control-lg"
                [ngClass]="{ 'is-invalid': submitted && f.date.errors }">
         <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
           <div *ngIf="f.date.errors.required">Date is required</div>
@@ -50,7 +50,7 @@
     </div>
     <div class="input-group size">
       <textarea formControlName="entry" class="form-control" rows="10" aria-label="With textarea"
-                value="{{post.entry}}" [ngClass]="{ 'is-invalid': submitted && f.entry.errors }"></textarea>
+                [ngClass]="{ 'is-invalid': submitted && f.entry.errors }"></textarea>
       <div *ngIf="submitted && f.entry.errors" class="invalid-feedback">
         <div *ngIf="f.entry.errors.required">Entry is required</div>
       </div>
