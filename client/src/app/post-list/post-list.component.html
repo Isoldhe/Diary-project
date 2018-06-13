@@ -16,14 +16,17 @@
   </div>
 </nav>
 
-<div class="container-fluid">
+<div class="postContainer container-fluid">
 
-  <div *ngFor="let post of allPosts" class="card" style="width: 60%;">
+  <div *ngFor="let post of allPosts" class="postContent card" style="width: 60%;">
     <div class="card-body">
       <a routerLink="/postdetail/{{post.id}}"><h5 class="card-title">{{post.title}}</h5></a>
-      <h6 class="card-subtitle mb-2 text-muted">{{post.smiley}}      {{post.date}}</h6>
+      <div class="postInline">
+        <h6 class="card-subtitle mb-2 text-muted">{{post.smiley}}</h6>
+        <h6 class="postDate">{{post.date}}</h6>
+      </div>
       <p class="card-text">{{post.entry}}</p>
-      <button (click)="delete(post.id)" type="button" class="btn btn-secondary">Delete</button>
+      <button (click)="delete(post.id)" type="button" class="postBtn btn btn-secondary">Delete</button>
       <button routerLink="/editpost/{{post.id}}" type="button" class="btn btn-secondary">Edit</button>
     </div>
   </div>

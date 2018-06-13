@@ -8,7 +8,8 @@ import {Router} from "@angular/router";
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css'],
-  providers: [PostService]
+  providers: [PostService],
+  // encapsulation: ViewEncapsulation.None
 })
 export class PostListComponent implements OnInit {
 
