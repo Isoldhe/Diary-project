@@ -31,3 +31,7 @@
 .post-nav-right p {
   padding-right: 15px;
 }
+
+.navbar-text {
+  text-align:center;
+}

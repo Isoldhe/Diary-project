@@ -1,3 +1,4 @@
+
 .postContainer {
   padding-top: 25px;
 }
@@ -18,4 +19,8 @@
 
 .postBtn {
   margin-right: 10px;
+}
+
+.navbar-text {
+  text-align:center;
 }
