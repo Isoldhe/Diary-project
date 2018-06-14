@@ -3,7 +3,6 @@ import {PostService} from '../services/post.service';
 import {Post} from '../models/Post';
 import {User} from "../models/User";
 import {Router} from "@angular/router";
-import { ReversePipe } from '../helpers/reversePipe';
 
 @Component({
   selector: 'app-post-list',
