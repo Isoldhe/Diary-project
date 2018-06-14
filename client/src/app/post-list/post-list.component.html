@@ -23,7 +23,7 @@
 
 <div class="postContainer container-fluid">
 
-  <div *ngFor="let post of allPosts" class="postContent card" style="width: 60%;">
+  <div *ngFor="let post of allPosts | reverse" class="postContent card" style="width: 60%;">
     <div class="card-body">
       <a routerLink="/postdetail/{{post.id}}"><h5 class="card-title">{{post.title}}</h5></a>
       <div class="postInline">

@@ -21,23 +21,6 @@
   </div>
 </nav>
 
-<div class="post-nav">
-  <!-- *ngIf="post..." prevents console errors -->
-  <div *ngIf="post && post.id > 1" class="post-nav-left">
-    <a *ngIf="post" routerLink="/postdetail/{{post.id - 1}}" role="button">
-      <img alt="previous post" src="../../assets/img/arrow-left.png">
-      <p>Previous post</p>
-    </a>
-  </div>
-
-  <div class="post-nav-right">
-    <a *ngIf="post" routerLink="/postdetail/{{post.id + 1}}" role="button">
-      <p>next post</p>
-      <img alt="next post" src="../../assets/img/arrow-right.png">
-    </a>
-  </div>
-</div>
-
 <div *ngIf="post">
   <h2>Title: {{ post.title }}</h2>
   <p>Mood: {{ post.smiley }}</p>
@@ -46,5 +29,4 @@
   <div>
     <p>Entry: {{ post.entry }}</p>
   </div>
-  <!--<button (click)="goBack()">go back</button>-->
 </div>

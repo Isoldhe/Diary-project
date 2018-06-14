@@ -53,6 +53,7 @@
                [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
         <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
           <div *ngIf="f.title.errors.required">Title is required</div>
+          <div *ngIf="f.title.errors.maxlength">Title has a max length of 60 characters</div>
         </div>
       </div>
       <div class="col">
