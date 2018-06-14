@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Location } from '@angular/common';
 import {PostService} from '../services/post.service';
 import {Post} from '../models/Post';
@@ -17,7 +17,8 @@ export class PostDetailComponent implements OnInit {
   currentUser: User;
 
   constructor(private route: ActivatedRoute,
-              private postService: PostService) {
+              private postService: PostService,
+              private router: Router) {
     this.postService.eventCallback$.subscribe(data => {
       this.callbackFunction();
     });
@@ -33,6 +34,11 @@ export class PostDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
 
     this.postService.findById(id).subscribe(post => this.post = post);
+  }
+
+  delete(id) {
+    this.postService.delete(id).subscribe(() => { this.postService.getAllPosts();
+                                                        this.router.navigate(['/home']); });
   }
 
 //  TODO: methods nextPost() and previousPost() for navigating through post views

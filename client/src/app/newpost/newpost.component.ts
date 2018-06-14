@@ -25,7 +25,7 @@ export class NewpostComponent implements OnInit {
   }
 
   public newPost = this.fb.group({
-    title: ['', Validators.required],
+    title: ['', Validators.required, Validators.maxLength(60)],
     smiley: ['', Validators.required],
     date: ['', Validators.required],
     entry: ['', Validators.required]

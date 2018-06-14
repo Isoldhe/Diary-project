@@ -8,8 +8,7 @@ import {Router} from "@angular/router";
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css'],
-  providers: [PostService],
-  // encapsulation: ViewEncapsulation.None
+  providers: [PostService]
 })
 export class PostListComponent implements OnInit {
 
@@ -32,6 +31,10 @@ export class PostListComponent implements OnInit {
 
   callbackFunction() {
     this.allPosts = this.postService.posts;
+
+    this.allPosts = this.allPosts.sort((a: any, b: any) =>
+      new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
   }
 
   delete(id) {

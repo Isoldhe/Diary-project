@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { ReversePipe } from './helpers/reversePipe';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     EditPostComponent,
     PostListComponent,
     LoginComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    ReversePipe
   ],
   imports: [
     BrowserModule,
