@@ -1,3 +1,35 @@
 .navbar-text {
   text-align:center;
 }
+
+.margin {
+  margin-top: 25px;
+}
+
+.editContent {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.editForm {
+  margin: auto;
+  width: 80%;
+  border-radius: 7%;
+  padding: 20px;
+  padding-bottom: 30px;
+}
+
+.label {
+  display: inline-block;
+  font-weight: bold;
+  width: 100%;
+}
+
+.entryWrapper {
+  width: 100%;
+}
+.entryFloat {
+  display: block;
+}

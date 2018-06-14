@@ -1,0 +1,39 @@
+.login-form {
+  margin: auto;
+  width: 40%;
+  border-radius: 7%;
+  padding: 20px;
+  padding-bottom: 30px;
+}
+
+
+.postContent {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.label {
+  display: inline-block;
+  font-weight: bold;
+  width: 100px;
+}
+
+.form-group {
+  width: 100%;
+  padding: 10px;
+}
+
+.login-form h2 {
+  text-align: center;
+}
+
+.button-group {
+  width: 50%;
+  float: left;
+}
+
+.button-group p {
+  display: inline-block;
+  padding-right: 10px;
+}

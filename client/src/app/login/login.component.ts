@@ -28,8 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.registerService.getAllUsers();
-    console.log(this.users)
-
+    console.log(this.users);
     this.logout();
   }
 

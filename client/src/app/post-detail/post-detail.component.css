@@ -35,3 +35,12 @@
 .navbar-text {
   text-align:center;
 }
+
+.postContainer {
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.postBtn {
+  margin-right: 10px;
+}

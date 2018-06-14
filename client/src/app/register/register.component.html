@@ -1,17 +1,22 @@
-<div class="jumbotron jumbotron-fluid">
+
+
+<div class="jumbotron jumbotron-fluid bg-dark">
   <div class="container">
-    <h1 class="header display-4">The Java diaries</h1>
-    <p class="header-sub lead">Share all your secrets with us. We won't tell anyone. We promise...</p>
+    <h1 class="header display-4 text-warning">Quacker</h1>
+    <p class="header-sub lead text-warning">Share all your secrets with us. We won't tell anyone. We promise...</p>
   </div>
 </div>
 
+
+<div class="postContainer postContent bg-dark" style="width: 60%;">
 <form class="login-form" name="login-form" [formGroup]="registerForm" (ngSubmit)="register()">
-  <h2>Register</h2>
+  <h2 class="text-warning">Register</h2>
 
   <!-- Identifiers are marked with red squiggly line, but functionality works (known issue) -->
 
   <div class="row">
     <div class="col">
+      <label class="label text-warning">First Name</label>
       <input formControlName="firstName" type="text" class="form-control" placeholder="First name"
              [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
       <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
@@ -20,6 +25,7 @@
     </div>
 
     <div class="col">
+      <label class="label text-warning">Last Name</label>
       <input formControlName="lastName" type="text" class="form-control" placeholder="Last name"
              [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
       <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
@@ -28,8 +34,8 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <label class="label">Email</label>
+  <div class="form-group col">
+    <label class="label text-warning">Email</label>
     <input formControlName="email" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" name="email"
            [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
@@ -39,7 +45,7 @@
   </div>
 
   <div class="form-group">
-    <label class="label">Username</label>
+    <label class="label text-warning">Username</label>
     <input formControlName="username" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter username" name="username"
            [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -48,21 +54,23 @@
   </div>
 
   <div class="form-group">
-    <label class="label" >Password</label>
+    <label class="label text-warning" >Password</label>
     <input formControlName="password" type="password" class="form-control" placeholder="Password"
            [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
       <div *ngIf="f.password.errors.required">Password is required</div>
-      <div *ngIf="f.password.errors.minlength">Password must be at least 5 characters</div>
+      <div *ngIf="f.password.errors.minLength">Password must be at least 5 characters</div>
     </div>
   </div>
 
   <div class="form-group">
     <div class="button-group">
-      <button type="submit" class="btn btn-primary">Register</button>
+      <button type="submit" class="btn btn-warning">Register</button>
     </div>
     <div class="button-group">
-      <p>Back to </p><a  routerLink="/login" class="btn btn-primary" role="button">Login</a>
+      <p class="text-white">Back to </p><a routerLink="/login" class="btn btn-warning" role="button">Login</a>
     </div>
   </div>
+
 </form>
+</div>

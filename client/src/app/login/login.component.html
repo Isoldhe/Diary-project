@@ -1,15 +1,16 @@
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid bg-dark">
   <div class="container">
-    <h1 class="header display-4">The Java diaries</h1>
-    <p class="header-sub lead">Share all your secrets with us. We won't tell anyone. We promise...</p>
+    <h1 class="header display-4 text-warning">Quacker</h1>
+    <p class="header-sub lead text-warning">Share all your secrets with us. We won't tell anyone. We promise...</p>
   </div>
 </div>
 
-<form class="login-form" name="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
-  <h2>Login</h2>
+<div class="postContainer postContent bg-dark" style="width: 60%;">
+<form class="login-form" name="login-form" [formGroup]="loginForm" (ngSubmit)="login()" style="width: 60%">
+  <h2 class="text-warning">Login</h2>
 
   <div class="form-group">
-    <label class="label">Username</label>
+    <label class="label text-warning">Username</label>
     <input formControlName="username" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter username" name="username"
            [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -18,7 +19,7 @@
   </div>
 
   <div class="form-group">
-    <label class="label" >Password</label>
+    <label class="label text-warning" >Password</label>
     <input formControlName="password" type="password" class="form-control" placeholder="Password"
            [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
@@ -28,10 +29,12 @@
 
   <div class="form-group">
     <div class="button-group">
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="btn btn-warning">Login</button>
     </div>
     <div class="button-group">
-      <a routerLink="/register" class="btn btn-primary" role="button">Register</a>
+      <p class="text-white">New here?</p>
+      <a routerLink="/register" class="btn btn-warning" role="button">Register</a>
     </div>
   </div>
 </form>
+</div>

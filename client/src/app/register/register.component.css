@@ -1,15 +1,11 @@
 .login-form {
-  background-color: rgb(255, 255, 255);
   margin: auto;
-  width: 40%;
-  border: 3px solid black;
+  width: 60%;
   border-radius: 7%;
   padding: 20px;
   padding-bottom: 30px;
 }
 .login-form h2 {
-  color: rgb(0, 60, 158);
-  font-weight: bold;
   text-align: center;
 }
 .login-form img {
@@ -37,4 +33,10 @@
 .button-group p {
   display: inline-block;
   padding-right: 10px;
+}
+
+.postContent {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 25px;
 }

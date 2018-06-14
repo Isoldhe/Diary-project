@@ -1,16 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto" style="width: 100%;">
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Home</a>
-      </li>
+      <a class="navbar-brand" href="/home">
+        <img src="../../assets/img/Quacker.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Quacker
+      </a>
       <li class="nav-item">
         <a class="nav-link" routerLink="/newpost" role="button">Add new post</a>
       </li>
     </ul>
     <div class="container">
     <span class="navbar-text" style="width: 100%">
-      Welcome {{currentUser.username}}
+      Welcome {{currentUser.firstName}}
     </span>
     </div>
     <ul class="navbar-nav mr-auto justify-content-end" style="width: 100%;">
@@ -21,30 +22,18 @@
   </div>
 </nav>
 
-<div class="post-nav">
-  <!-- *ngIf="post..." prevents console errors -->
-  <div *ngIf="post && post.id > 1" class="post-nav-left">
-    <a *ngIf="post" routerLink="/postdetail/{{post.id - 1}}" role="button">
-      <img alt="previous post" src="../../assets/img/arrow-left.png">
-      <p>Previous post</p>
-    </a>
-  </div>
 
-  <div class="post-nav-right">
-    <a *ngIf="post" routerLink="/postdetail/{{post.id + 1}}" role="button">
-      <p>next post</p>
-      <img alt="next post" src="../../assets/img/arrow-right.png">
-    </a>
+<div class="postContainer container-fluid ">
+<div *ngIf="post" class="postContainer postContent card" style="width: 60%;">
+  <div class="card-body bg-dark">
+    <a routerLink="/postdetail/{{post.id}}"><h5 class="card-title text-warning">{{post.title}}</h5></a>
+    <div class="postInline">
+      <h6 class="card-subtitle mb-2 text-white">{{post.smiley}}</h6>
+      <h6 class="postDate text-white">{{post.date}}</h6>
+    </div>
+    <p class="card-text text-white">{{post.entry}}</p>
+    <button (click)="delete(post.id)" type="button" class="postBtn btn btn-warning">Delete</button>
+    <button routerLink="/editpost/{{post.id}}" type="button" class="btn btn-warning">Edit</button>
   </div>
 </div>
-
-<div *ngIf="post">
-  <h2>Title: {{ post.title }}</h2>
-  <p>Mood: {{ post.smiley }}</p>
-  <p>Postid: {{post.id}}</p>
-  <p>Date: {{ post.date }}</p>
-  <div>
-    <p>Entry: {{ post.entry }}</p>
-  </div>
-  <!--<button (click)="goBack()">go back</button>-->
 </div>

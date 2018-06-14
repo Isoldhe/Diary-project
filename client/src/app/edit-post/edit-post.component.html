@@ -1,16 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto" style="width: 100%;">
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Home</a>
-      </li>
+      <a class="navbar-brand" href="/home">
+        <img src="../../assets/img/Quacker.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Quacker
+      </a>
       <li class="nav-item">
         <a class="nav-link" routerLink="/newpost" role="button">Add new post</a>
       </li>
     </ul>
     <div class="container">
     <span class="navbar-text" style="width: 100%">
-      Welcome {{currentUser.username}}
+      Welcome {{currentUser.firstName}}
     </span>
     </div>
     <ul class="navbar-nav mr-auto justify-content-end" style="width: 100%;">
@@ -21,10 +22,11 @@
   </div>
 </nav>
 
-<div class="container-fluid" *ngIf="post">
-  <form [formGroup]="editPost" (ngSubmit)="save()">
+<div class="postContainer editContent margin bg-dark" style="width: 80%" *ngIf="post">
+  <form class="editForm" [formGroup]="editPost" (ngSubmit)="save()">
     <div class="form-row">
       <div class="col">
+        <label class="text-warning label">Smiley</label>
         <select formControlName="smiley" class="custom-select mr-sm-2 col form-control-lg" id="inlineFormCustomSelect"
                 [ngClass]="{ 'is-invalid': submitted && f.smiley.errors }">
           <option selected>{{post.smiley}}</option>
@@ -39,6 +41,7 @@
         </div>
       </div>
       <div class="col-8">
+        <label class="text-warning label">Title</label>
         <input formControlName="title" type="text" class="form-control form-control-lg"
                [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
         <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
@@ -46,6 +49,7 @@
         </div>
       </div>
       <div class="col">
+        <label class="text-warning label">Date</label>
         <input formControlName="date" type="date" class="form-control form-control-lg"
                [ngClass]="{ 'is-invalid': submitted && f.date.errors }">
         <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
@@ -53,14 +57,15 @@
         </div>
       </div>
     </div>
-    <div class="input-group size">
+    <div class="input-group size margin">
+      <label class="text-warning entryFloat label">Entry</label>
       <textarea formControlName="entry" class="form-control" rows="10" aria-label="With textarea"
                 [ngClass]="{ 'is-invalid': submitted && f.entry.errors }"></textarea>
       <div *ngIf="submitted && f.entry.errors" class="invalid-feedback">
         <div *ngIf="f.entry.errors.required">Entry is required</div>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Post</button>
+    <button type="submit" class="btn btn-warning margin">Quack</button>
 
   </form>
 </div>
