@@ -5,7 +5,6 @@ import {Post} from '../models/Post';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs/internal/observable/throwError';
 import {Subject} from 'rxjs/internal/Subject';
-import {User} from "../models/User";
 
 @Injectable({
   providedIn: 'root'

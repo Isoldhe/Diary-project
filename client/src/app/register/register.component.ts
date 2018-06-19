@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../models/User';
 import {RegisterService} from '../services/register.service';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,21 +11,21 @@ import {Router} from "@angular/router";
   providers: [RegisterService]
 })
 export class RegisterComponent implements OnInit {
+  registerForm: FormGroup;
   submitted = false;
 
   constructor(public fb: FormBuilder,
               private registerService: RegisterService,
               private router: Router) { }
-
-  public registerForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    username: ['', Validators.required],
-    password: ['', [Validators.required, Validators.minLength(5)]]
-  });
-
+              
   ngOnInit() {
+    this.registerForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(5)]]
+    });
   }
 
   // convenience getter for easy access to form fields

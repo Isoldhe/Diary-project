@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../services/post.service';
 import {Post} from '../models/Post';
 import {Router} from "@angular/router";
@@ -14,6 +14,7 @@ import {User} from "../models/User";
   })
 
 export class NewpostComponent implements OnInit {
+  newPost: FormGroup;
   submitted = false;
 
   currentUser: User;
@@ -24,21 +25,21 @@ export class NewpostComponent implements OnInit {
               private router: Router) {
   }
 
-  public newPost = this.fb.group({
-    title: ['', Validators.required, Validators.maxLength(60)],
-    smiley: ['', Validators.required],
-    date: ['', Validators.required],
-    entry: ['', Validators.required]
-  });
-
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    this.newPost = this.fb.group({
+      title: ['', [Validators.required, Validators.maxLength(60)]],
+      smiley: ['', Validators.required],
+      date: ['', Validators.required],
+      entry: ['', Validators.required]
+    });
   }
 
   // convenience getter for easy access to form fields
   get f() { return this.newPost.controls; }
 
-  public saveNewPost(event) {
+  public saveNewPost() {
     const title = this.f['title'].value;
     const smiley = this.f['smiley'].value;
     const date = this.f['date'].value;
