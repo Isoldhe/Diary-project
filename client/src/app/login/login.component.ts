@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RegisterService} from "../services/register.service";
 import {User} from "../models/User";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-login',
@@ -10,26 +11,34 @@ import {User} from "../models/User";
   providers: [RegisterService]
 })
 export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
   submitted = false;
+
+  private subscription: Subscription;
+  message: any;
 
   users: User[];
 
   constructor(public fb: FormBuilder, private registerService: RegisterService) {
     this.registerService.eventCallback$.subscribe(data => {
-      console.log('eventCallBack login');
       this.callbackFunction();
     });
   }
-
-  public loginForm = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required]
-  });
 
   ngOnInit() {
     this.registerService.getAllUsers();
     console.log(this.users);
     this.logout();
+
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+
+    // Subscription to error message for when username/password is incorrect
+    this.subscription = this.registerService.getMessage().subscribe(message => {
+      this.message = message;
+    });
   }
 
   // convenience getter for easy access to form fields

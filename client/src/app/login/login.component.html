@@ -12,6 +12,11 @@
   </div>
 </div>
 
+<!-- Alert message if username or password is incorrect -->
+<div *ngIf="message" class="alertMessage" [ngClass]="{ 'alert': message, 'alert-danger': message.type === 'error' }">
+  {{message.text}}
+</div>
+
 <div class="postContainer postContent bg-dark" style="width: 60%;">
 <form class="login-form" name="login-form" [formGroup]="loginForm" (ngSubmit)="login()" style="width: 60%">
   <h2 class="text-warning">Login</h2>

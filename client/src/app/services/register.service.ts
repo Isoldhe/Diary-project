@@ -12,6 +12,9 @@ import {Subject} from "rxjs/internal/Subject";
   providedIn: 'root'
 })
 export class RegisterService {
+  // Subject for alert message LoginComponent
+  private subject = new Subject<any>();
+
   private eventCallback = new Subject<User[]>(); // Source
   eventCallback$ = this.eventCallback.asObservable(); // Stream
 
@@ -64,19 +67,26 @@ export class RegisterService {
             this.router.navigate(['/home']);
           } else {
             // Login was not successful
-            // TODO: add alert message that user can see
-            console.log('password is incorrect');
+            this.error('Username or password is incorrect');
           }
       }
 
     } catch(error) {
-      // TODO: add alert message that user can see
-      console.log('Username does not exist');
+      this.error('Username or password is incorrect');
       this.errorHandler(error);
     }
   }
 
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || "Server Error")
+  }
+
+  error(message: string) {
+    this.subject.next({ type: 'error', text: message });
+  }
+
+  // Returning message as subject when authentication is invalid
+  getMessage(): Observable<any> {
+    return this.subject.asObservable();
   }
 }
