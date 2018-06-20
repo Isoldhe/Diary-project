@@ -4,9 +4,16 @@
 }
 
 .postContent {
-  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   margin-bottom: 25px;
+}
+
+/* Ellipsis on post entry text */
+.postContent p {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .postInline h6 {
