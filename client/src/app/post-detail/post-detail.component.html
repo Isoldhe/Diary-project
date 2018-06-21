@@ -22,6 +22,19 @@
   </div>
 </nav>
 
+<div class="post-nav">
+  <!-- *ngIf="post..." prevents console errors -->
+  <div *ngIf="post && post.id > 1" class="post-nav-left">
+      <img alt="previous post" src="../../assets/img/arrow-left.png">
+      <p (click)="newerPost()">Newer post</p>
+  </div>
+
+  <div class="post-nav-right">
+      <p (click)="olderPost()">Older post</p>
+      <img alt="next post" src="../../assets/img/arrow-right.png">
+  </div>
+</div>
+
 <div class="postContainer container-fluid ">
 <div *ngIf="post" class="postContainer postContent card" style="width: 60%;">
   <div class="card-body bg-dark">

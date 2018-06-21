@@ -32,6 +32,7 @@ export class PostListComponent implements OnInit {
   callbackFunction() {
     this.allPosts = this.postService.posts;
 
+    // Sort post order based on date
     this.allPosts = this.allPosts.sort((a: any, b: any) =>
       new Date(a.date).getTime() - new Date(b.date).getTime()
     );
