@@ -24,14 +24,14 @@
 
 <div class="post-nav">
   <!-- *ngIf="post..." prevents console errors -->
-  <div *ngIf="post && post.id > 1" class="post-nav-left">
-      <img alt="previous post" src="../../assets/img/arrow-left.png">
+  <div *ngIf="post && !lastPost" class="post-nav-left">
+      <img alt="Newer post" src="../../assets/img/arrow-left.png">
       <p (click)="newerPost()">Newer post</p>
   </div>
 
-  <div class="post-nav-right">
+  <div *ngIf="post && !firstPost" class="post-nav-right">
       <p (click)="olderPost()">Older post</p>
-      <img alt="next post" src="../../assets/img/arrow-right.png">
+      <img alt="Older post" src="../../assets/img/arrow-right.png">
   </div>
 </div>
 

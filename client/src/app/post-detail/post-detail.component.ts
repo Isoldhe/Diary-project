@@ -18,6 +18,9 @@ export class PostDetailComponent implements OnInit {
 
   allPosts: Post[];
 
+  firstPost = false;  // true if post is newest (index 0 in allPosts)
+  lastPost = false;  // true if post is oldest (last index in allPosts)
+
   constructor(private route: ActivatedRoute,
               private postService: PostService,
               private router: Router) {
@@ -34,7 +37,14 @@ export class PostDetailComponent implements OnInit {
 
   callbackFunction() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.postService.findById(id).subscribe(post => this.post = post);
+    this.postService.findById(id).subscribe(post => {this.post = post;
+                                                            const currentPostIndex = this.allPosts.findIndex(
+                                                              currentPost => currentPost.id === this.post.id);
+                                                            if (currentPostIndex === 0) {
+                                                              this.firstPost = true;
+                                                              console.log("firstPost is true");
+                                                            }
+                                                            console.log("this.post title = " + this.post.title); });
 
     this.allPosts = this.postService.posts;
     console.log("allPosts in PostDetail = " + this.allPosts); // works
@@ -59,9 +69,16 @@ export class PostDetailComponent implements OnInit {
   }
 
   olderPost() {
+    // Finding index of this post
     const currentPostIndex = this.allPosts.findIndex(
       currentPost => currentPost.id === this.post.id);
 
+    // if (currentPostIndex -1 == 0) {
+    //   console.log("Setting firstPost to true");
+    //   this.firstPost = true;
+    // }
+
+    // Getting index of next post
     const nextPost = this.allPosts[currentPostIndex - 1];
     const nextId = nextPost.id;
 
@@ -78,10 +95,10 @@ export class PostDetailComponent implements OnInit {
     const nextPost = this.allPosts[currentPostIndex + 1];
     const nextId = nextPost.id;
 
-    // Putting router.navigate in a subscribe(), because it doesn't work properly as standalone function
-    // So this findById() function is not really necessary, but it takes the user to the next page
     this.postService.findById(nextId).subscribe(post => { this.post = post;
       this.router.navigate(['/postdetail/', nextId]) });
   }
+
+  // TODO: Decide if a post is the first or last in the array. If so, hide the navigation buttons accordingly
 
 }
