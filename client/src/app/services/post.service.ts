@@ -15,6 +15,9 @@ export class PostService {
 
   posts: Post[];
 
+  firstPost = false;  // true if post is newest (index 0 in allPosts)
+  lastPost = false;  // true if post is oldest (last index in allPosts)
+
   constructor(private http: HttpClient) {
   }
 
