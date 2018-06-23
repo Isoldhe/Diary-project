@@ -24,13 +24,13 @@
 
 <div class="post-nav">
   <!-- *ngIf="post..." prevents console errors -->
-  <div *ngIf="post && !this.postService.lastPost" class="post-nav-left">
+  <div *ngIf="post && !this.postService.lastPost" class="post-nav-left" (click)="newerPost()">
       <img alt="Newer post" src="../../assets/img/arrow-left.png">
-      <p (click)="newerPost()">Newer post</p>
+      <p>Newer post</p>
   </div>
 
-  <div *ngIf="post && !this.postService.firstPost" class="post-nav-right">
-      <p (click)="olderPost()">Older post</p>
+  <div *ngIf="post && !this.postService.firstPost" class="post-nav-right" (click)="olderPost()">
+      <p>Older post</p>
       <img alt="Older post" src="../../assets/img/arrow-right.png">
   </div>
 </div>

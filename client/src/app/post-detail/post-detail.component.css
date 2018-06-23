@@ -3,10 +3,14 @@
 }
 
 .post-nav {
-  display: inline-block;
-  margin: auto;
+  display: block;
+  margin: 0 auto;
+  margin-top: 25px;
   width: 75%;
   height: 60px;
+}
+.post-nav :hover {
+  cursor: pointer;
 }
 .post-nav p {
   display: inline-block;
@@ -38,7 +42,7 @@
 
 .postContainer {
   margin: 0 auto;
-  margin-top: 25px;
+  margin-top: 20px;
   white-space: pre-wrap;  /* Preserves the line breaks */
 }
 
