@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   background-color: whitesmoke;
+  /* "Arial Unicode MS" makes the colored emoji black and white, so don't use it */
+  /* font-family: "Arial Unicode MS", "Segoe UI Symbol", "emoji", "Symbola"; */
 }

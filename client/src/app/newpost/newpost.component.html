@@ -22,8 +22,6 @@
   </div>
 </nav>
 
-
-
 <div class="postContainer postContent bg-dark" style="width: 80%;">
   <form class="postForm" [formGroup]="newPost" (ngSubmit)="saveNewPost()">
     <div class="form-row">
@@ -32,11 +30,11 @@
         <select formControlName="smiley" class="custom-select mr-sm-2 col form-control-lg" id="inlineFormCustomSelect"
                 [ngClass]="{ 'is-invalid': submitted && f.smiley.errors }">
           <option selected>Choose...</option>
-          <option value=": D">: D</option>
-          <option value=": )">: )</option>
-          <option value=": /">: /</option>
-          <option value=">:@">>: @</option>
-          <option value=":'(">:'(</option>
+          <option value="😄">{{ smileyVeryHappy }}</option>
+          <option value="🙂">{{ smileySlightlyHappy }}</option>
+          <option value="😐">{{ smileyNeutral }}</option>
+          <option value="😡">{{ smileyAngry }}</option>
+          <option value="😢">{{ smileySad }}</option>
         </select>
         <div *ngIf="submitted && f.smiley.errors" class="invalid-feedback">
           <div *ngIf="f.smiley.errors.required">Smiley is required</div>

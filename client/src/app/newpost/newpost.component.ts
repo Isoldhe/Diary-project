@@ -19,6 +19,15 @@ export class NewpostComponent implements OnInit {
 
   currentUser: User;
 
+  smileyVeryHappy: any = '😄';
+  smileySlightlyHappy: any = '🙂';
+  smileyNeutral: any = '😐';
+  smileyAngry: any = '😡';
+  smileySad: any = '😢';
+
+  // These unicode versions work: 1.1, 4.1, 5.2 (some), 7.0, 8.0, 9.0, 10.0):
+  // These unicode versions DON'T work: 6.0, 6.1
+
   constructor(public fb: FormBuilder,
               private postService: PostService,
               private registerService: RegisterService,
