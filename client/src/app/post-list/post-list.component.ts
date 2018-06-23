@@ -17,6 +17,14 @@ export class PostListComponent implements OnInit {
 
   currentUser: User;
 
+  // smiley: any;
+
+  smileyVeryHappy: any = '😄';
+  smileySlightlyHappy: any = '🙂';
+  smileyNeutral: any = '😐';
+  smileyAngry: any = '😡';
+  smileySad: any = '😢';
+
   constructor(private postService: PostService,
               private router: Router) {
     this.postService.eventCallback$.subscribe(data => {
@@ -40,6 +48,26 @@ export class PostListComponent implements OnInit {
 
   delete(id) {
     this.postService.delete(id).subscribe(() => this.postService.getAllPosts());
+  }
+
+  getSmiley(storedSmiley) {
+    let smiley: any = '';
+    if (storedSmiley == "very happy") {
+      smiley = this.smileyVeryHappy;
+    }
+    else if (storedSmiley == "slightly happy") {
+      smiley = this.smileySlightlyHappy;
+    }
+    else if (storedSmiley == "neutral") {
+      smiley = this.smileyNeutral;
+    }
+    else if (storedSmiley == "angry") {
+      smiley = this.smileyAngry;
+    }
+    else if (storedSmiley == "sad") {
+      smiley = this.smileySad;
+    }
+    return smiley;
   }
 
 

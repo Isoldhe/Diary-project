@@ -1,13 +1,13 @@
 export class Post {
   id: number;
   title: string;
-  smiley: any;
+  smiley: string;
   date: string;
   entry: string;
   userId: number;
 
 
-  constructor(id: number, title: string, smiley: any, date: string, entry: string, userId: number) {
+  constructor(id: number, title: string, smiley: string, date: string, entry: string, userId: number) {
     this.id = id;
     this.title = title;
     this.smiley = smiley;

@@ -29,12 +29,12 @@
         <label class="text-warning label">Smiley</label>
         <select formControlName="smiley" class="custom-select mr-sm-2 col form-control-lg" id="inlineFormCustomSelect"
                 [ngClass]="{ 'is-invalid': submitted && f.smiley.errors }">
-          <option selected>{{post.smiley}}</option>
-          <option value=": D">: D</option>
-          <option value=": )">: )</option>
-          <option value=": /">: /</option>
-          <option value=">:@">>: @</option>
-          <option value=":'(">:'(</option>
+          <option selected>Choose...</option>
+          <option value="very happy">{{ smileyVeryHappy }}</option>
+          <option value="slightly happy">{{ smileySlightlyHappy }}</option>
+          <option value="neutral">{{ smileyNeutral }}</option>
+          <option value="angry">{{ smileyAngry }}</option>
+          <option value="sad">{{ smileySad }}</option>
         </select>
         <div *ngIf="submitted && f.smiley.errors" class="invalid-feedback">
           <div *ngIf="f.smiley.errors.required">Smiley is required</div>

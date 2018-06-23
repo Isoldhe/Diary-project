@@ -18,6 +18,12 @@ export class EditPostComponent implements OnInit, OnChanges {
 
   @Input() post: Post;
 
+  smileyVeryHappy: any = '😄';
+  smileySlightlyHappy: any = '🙂';
+  smileyNeutral: any = '😐';
+  smileyAngry: any = '😡';
+  smileySad: any = '😢';
+
   constructor(
     public fb: FormBuilder,
     private route: ActivatedRoute,
