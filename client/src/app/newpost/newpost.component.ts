@@ -19,19 +19,24 @@ export class NewpostComponent implements OnInit {
 
   currentUser: User;
 
+  // FIXME: in Chrome, after page refresh in this component, all unicode 6.0 smileys disappear from the dropdown menu
+  // All smileys are present however when you load NewPost from Home component by clicking 'add new post' button
+  // It seems to be a Chrome issue, because FireFox has no issues with emoji
+
   smileyVeryHappy: any = '😄';
-  smileySlightlyHappy: any = '🙂';
+  smileySlightlyHappy: any = '🙂';  // this is the only smiley that stays after page refresh in Chrome
   smileyNeutral: any = '😐';
   smileyAngry: any = '😡';
   smileySad: any = '😢';
 
-  // These unicode versions work: 1.1, 4.1, 5.2 (some), 7.0, 8.0, 9.0, 10.0):
-  // These unicode versions DON'T work: 6.0, 6.1
+  key: any;
 
   constructor(public fb: FormBuilder,
               private postService: PostService,
               private registerService: RegisterService,
               private router: Router) {
+                console.log("Smileys from constructor: " + this.smileyVeryHappy, this.smileySlightlyHappy, this.smileyNeutral, this.smileyAngry, this.smileySad);
+                console.log("Constructor done");
   }
 
   ngOnInit() {
@@ -43,6 +48,8 @@ export class NewpostComponent implements OnInit {
       date: ['', Validators.required],
       entry: ['', Validators.required]
     });
+    console.log("Smileys from ngOnInit: " + this.smileyVeryHappy, this.smileySlightlyHappy, this.smileyNeutral, this.smileyAngry, this.smileySad);
+    console.log("ngOnInit done");
   }
 
   // convenience getter for easy access to form fields
