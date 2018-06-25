@@ -2,6 +2,10 @@
   line-height: 1.7em;
 }
 
+.smiley {
+  font-size: 2em;
+}
+
 .post-nav {
   display: block;
   margin: 0 auto;

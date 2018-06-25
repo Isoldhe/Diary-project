@@ -18,6 +18,12 @@ export class PostDetailComponent implements OnInit {
 
   allPosts: Post[];
 
+  smileyVeryHappy: any = '😄';
+  smileySlightlyHappy: any = '🙂';
+  smileyNeutral: any = '😐';
+  smileyAngry: any = '😡';
+  smileySad: any = '😢';
+
   constructor(private route: ActivatedRoute,
               private postService: PostService,
               private router: Router) {
@@ -50,6 +56,26 @@ export class PostDetailComponent implements OnInit {
     });
 
     this.allPosts = this.postService.posts;
+  }
+
+  getSmiley(storedSmiley) {
+    let smiley: any = '';
+    if (storedSmiley == "very happy") {
+      smiley = this.smileyVeryHappy;
+    }
+    else if (storedSmiley == "slightly happy") {
+      smiley = this.smileySlightlyHappy;
+    }
+    else if (storedSmiley == "neutral") {
+      smiley = this.smileyNeutral;
+    }
+    else if (storedSmiley == "angry") {
+      smiley = this.smileyAngry;
+    }
+    else if (storedSmiley == "sad") {
+      smiley = this.smileySad;
+    }
+    return smiley;
   }
 
   delete(id) {

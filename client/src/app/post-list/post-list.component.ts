@@ -17,8 +17,6 @@ export class PostListComponent implements OnInit {
 
   currentUser: User;
 
-  // smiley: any;
-
   smileyVeryHappy: any = '😄';
   smileySlightlyHappy: any = '🙂';
   smileyNeutral: any = '😐';
