@@ -15,6 +15,7 @@ export class PostService {
 
   posts: Post[];
 
+  // Variables for PostDetail navigation to next/previous post
   firstPost = false;  // true if post is newest (index 0 in allPosts)
   lastPost = false;  // true if post is oldest (last index in allPosts)
 
@@ -36,10 +37,11 @@ export class PostService {
     );
   }
 
-  getPost(id: number): Observable<Post>  {
-    return this.http.get<Post>('http://localhost:8080/post/' + id).pipe(
-      catchError(this.errorHandler));
-  }
+  // This function is the same as findAll, so not necessary (probably, keeping it here out commented just in case)
+  // getPost(id: number): Observable<Post>  {
+  //   return this.http.get<Post>('http://localhost:8080/post/' + id).pipe(
+  //     catchError(this.errorHandler));
+  // }
 
   findAll(id: number): Observable<Post[]>  {
     return this.http.get<Post[]>('http://localhost:8080/post/' + id).pipe(

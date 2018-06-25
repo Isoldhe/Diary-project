@@ -53,8 +53,20 @@ export class RegisterService {
       )
   }
 
-  public authenticate(username: string, password: string) {
+  // Observable<User>
+  findByEmail(email: string) {
+    return this.http.get<User>('http://localhost:8080/user/' + email).pipe(
+      catchError(this.errorHandler));
+  }
 
+  findByUsername(username: string): Observable<User>  {
+    return this.http.get<User>('http://localhost:8080/user/name/' + username).pipe(
+      catchError(this.errorHandler));
+  }
+
+
+  // Login functions
+  authenticate(username: string, password: string) {
     try {
       // If this.user is empty, because it couldn't find a user with this username, it throws an error which will be caught
       this.user = this.users.find(u => u.username == username);

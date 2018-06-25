@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../models/User';
 import {RegisterService} from '../services/register.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +14,8 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
+  user: User;
+
   constructor(public fb: FormBuilder,
               private registerService: RegisterService,
               private router: Router) { }
@@ -22,11 +24,12 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email] ],
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(5)]]
     });
   }
+
 
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
@@ -43,6 +46,30 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
+
+    this.registerService.findByEmail(email).subscribe(userByEmail => { 
+      this.user = userByEmail
+      console.log("user added to Register's this.user");
+
+      const testUserEmail = this.user.email;
+      console.log("testUserEmail = " + testUserEmail);
+    });
+
+    console.log("this.user.email = " + this.user.email);
+    console.log("email = " + email);
+    if (this.user.email == email) {
+      console.log("This email already exists!");
+      return;
+    }
+
+    // this.registerService.findByUsername(username).subscribe(userByUsername => { user = userByUsername; 
+    //   console.log("user by username = " + user.username);
+    // });
+
+    // if (user.username == username) {
+    //   console.log("This username already exists! Choose another one");
+    //   return;
+    // }
 
     this.registerService.saveUser(new User(0, firstName, lastName, email, username, password)).subscribe();
 
