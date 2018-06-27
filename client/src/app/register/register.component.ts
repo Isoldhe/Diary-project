@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../models/User';
 import {RegisterService} from '../services/register.service';
-import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
+import {FormBuilder, FormGroup, FormControl, Validators, AbstractControl} from '@angular/forms';
 import {Router} from '@angular/router';
+import {ValidateEmail} from '../validators/ValidateEmail';
 
 @Component({
   selector: 'app-register',
@@ -24,12 +25,11 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email] ],
+      email: ['', [Validators.required, Validators.email], ValidateEmail.createValidator(this.registerService) ],
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(5)]]
     });
   }
-
 
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
@@ -44,33 +44,11 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
+      console.log("Form is invalid!");
       return;
     }
 
-    this.registerService.findByEmail(email).subscribe(userByEmail => { 
-      this.user = userByEmail
-      console.log("user added to Register's this.user");
-
-      const testUserEmail = this.user.email;
-      console.log("testUserEmail = " + testUserEmail);
-    });
-
-    console.log("this.user.email = " + this.user.email);
-    console.log("email = " + email);
-    if (this.user.email == email) {
-      console.log("This email already exists!");
-      return;
-    }
-
-    // this.registerService.findByUsername(username).subscribe(userByUsername => { user = userByUsername; 
-    //   console.log("user by username = " + user.username);
-    // });
-
-    // if (user.username == username) {
-    //   console.log("This username already exists! Choose another one");
-    //   return;
-    // }
-
+    console.log("Form is valid");
     this.registerService.saveUser(new User(0, firstName, lastName, email, username, password)).subscribe();
 
     // Adding routerlink here, because it doesn't work in html

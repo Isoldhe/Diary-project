@@ -29,7 +29,7 @@ public class UserController {
 
     // findByEmail from http://localhost:8080/user/{email}
     @ResponseBody
-    @RequestMapping(value = "/user/{email}", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/email/{email}", method = RequestMethod.GET)
     public List<User> findByEmail(@PathVariable String email) {
         return userService.findByEmail(email);
     }

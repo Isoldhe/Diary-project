@@ -3,7 +3,7 @@ import {User} from "../models/User";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import { Router } from '@angular/router';
 
-import {catchError} from "rxjs/operators";
+import {catchError, filter, map } from "rxjs/operators";
 import {throwError} from "rxjs/internal/observable/throwError";
 import {Observable} from "rxjs/internal/Observable";
 import {Subject} from "rxjs/internal/Subject";
@@ -53,9 +53,15 @@ export class RegisterService {
       )
   }
 
-  // Observable<User>
-  findByEmail(email: string) {
-    return this.http.get<User>('http://localhost:8080/user/' + email).pipe(
+  // findByEmail(email: string): Observable<User> {
+  //   console.log("Finding email in registerService");
+  //   return this.http.get<User>('http://localhost:8080/user/email/' + email).pipe(
+  //     catchError(this.errorHandler));
+  // }
+
+  findByEmail(email: string): Observable<User[]> {
+    return this.http.get<User[]>('http://localhost:8080/user').pipe(
+      map(users => users.filter(user => user.email === email)),
       catchError(this.errorHandler));
   }
 
