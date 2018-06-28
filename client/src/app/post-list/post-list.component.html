@@ -10,11 +10,14 @@
       </li>
     </ul>
     <div class="container">
-    <span class="navbar-text" style="width: 100%">
-      Welcome {{currentUser.firstName}}
-    </span>
+      <span class="navbar-text" style="width: 100%">
+        Welcome {{currentUser.firstName}}
+      </span>
     </div>
     <ul class="navbar-nav mr-auto justify-content-end" style="width: 100%;">
+      <li class="nav-item">
+        <a class="nav-link" mat-raised-button (click)="openDialog()">Delete account</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/login" role="button">Logout</a>
       </li>

@@ -1,8 +1,9 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {PostService} from '../services/post.service';
-import {Post} from '../models/Post';
-import {User} from "../models/User";
-import {Router} from "@angular/router";
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { PostService } from '../services/post.service';
+import { Post } from '../models/Post';
+import { User } from "../models/User";
+import { DeleteAccountDialogComponent } from '../delete-account-dialog/delete-account-dialog.component';
 
 @Component({
   selector: 'app-post-list',
@@ -23,8 +24,11 @@ export class PostListComponent implements OnInit {
   smileyAngry: any = '😡';
   smileySad: any = '😢';
 
+  // Boolean for DeleteAccountDialog
+  deleteAccount: boolean = false;
+
   constructor(private postService: PostService,
-              private router: Router) {
+              public dialog: MatDialog) {
     this.postService.eventCallback$.subscribe(data => {
       this.callbackFunction();
     });
@@ -66,6 +70,22 @@ export class PostListComponent implements OnInit {
       smiley = this.smileySad;
     }
     return smiley;
+  }
+
+  // Open DeleteAccountDialog
+  openDialog(): void {
+    console.log("this.deleteAccount on open dialog = " + this.deleteAccount);
+    const dialogRef = this.dialog.open(DeleteAccountDialogComponent, {
+      width: '250px',
+      data: {deleteAccount: this.deleteAccount}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log("Delete account? " + result); // undefined
+      this.deleteAccount = result;
+      console.log("this.deleteAccount on close = " + this.deleteAccount); // undefined
+    });
   }
 
 

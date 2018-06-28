@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
@@ -16,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { ReversePipe } from './helpers/reversePipe';
+import { DeleteAccountDialogComponent } from './delete-account-dialog/delete-account-dialog.component';
 
 
 @NgModule({
@@ -27,13 +30,19 @@ import { ReversePipe } from './helpers/reversePipe';
     PostListComponent,
     LoginComponent,
     PostDetailComponent,
-    ReversePipe
+    ReversePipe,
+    DeleteAccountDialogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule,
+    BrowserAnimationsModule
+  ],
+  entryComponents: [
+    DeleteAccountDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
