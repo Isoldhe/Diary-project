@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.registerService.getAllUsers();
-    console.log(this.users);
+
+    // logout currentuser if he's still logged in from previous browser session
     this.logout();
 
     this.loginForm = this.fb.group({
@@ -64,5 +65,8 @@ export class LoginComponent implements OnInit {
 
   callbackFunction() {
     this.users = this.registerService.users;
+    console.log("callback in login: ");
+    console.log(this.users);
+    console.log("-------------------------------");
   }
 }

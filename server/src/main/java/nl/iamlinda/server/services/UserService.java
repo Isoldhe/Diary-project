@@ -11,8 +11,4 @@ import java.util.List;
 @Repository
 public interface UserService extends CrudRepository<User, Integer> {
 
-//    All that's needed to search for User by email (see UserController for implementation)
-    List<User> findByEmail(String email);
-
-	List<User> findByUsername(String username);
 }

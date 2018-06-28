@@ -4,6 +4,7 @@ import {RegisterService} from '../services/register.service';
 import {FormBuilder, FormGroup, FormControl, Validators, AbstractControl} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ValidateEmail} from '../validators/ValidateEmail';
+import {ValidateUsername} from '../validators/ValidateUsername';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email], ValidateEmail.createValidator(this.registerService) ],
-      username: ['', Validators.required],
+      username: ['', [Validators.required], ValidateUsername.createValidator(this.registerService) ],
       password: ['', [Validators.required, Validators.minLength(5)]]
     });
   }
@@ -44,14 +45,10 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
-      console.log("Form is invalid!");
       return;
     }
 
-    console.log("Form is valid");
-    this.registerService.saveUser(new User(0, firstName, lastName, email, username, password)).subscribe();
-
-    // Adding routerlink here, because it doesn't work in html
-    this.router.navigate(['/login']);
+    // Subscribe with navigate at the end prevents async data load in login component after registration
+    this.registerService.saveUser(new User(0, firstName, lastName, email, username, password)).subscribe(() => this.router.navigate(['/login']));
   }
 }

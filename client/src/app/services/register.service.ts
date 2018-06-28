@@ -29,6 +29,7 @@ export class RegisterService {
     this.findAll().subscribe(
       users => {
         this.users = users;
+        console.log("users from register service = ");
         console.log(this.users);
         this.eventCallback.next(this.users);
       },
@@ -39,6 +40,7 @@ export class RegisterService {
   }
 
   public saveUser(user: User) {
+    console.log("Saved user:");
     console.log(user);
     return this.http.post('http://localhost:8080/user', user)
       .pipe(
@@ -47,17 +49,12 @@ export class RegisterService {
   }
 
   findAll(): Observable<User[]>  {
+    console.log("findAll() in register service");
     return this.http.get<User[]>('http://localhost:8080/user')
       .pipe(
         catchError(this.errorHandler)
       )
   }
-
-  // findByEmail(email: string): Observable<User> {
-  //   console.log("Finding email in registerService");
-  //   return this.http.get<User>('http://localhost:8080/user/email/' + email).pipe(
-  //     catchError(this.errorHandler));
-  // }
 
   findByEmail(email: string): Observable<User[]> {
     return this.http.get<User[]>('http://localhost:8080/user').pipe(
@@ -65,8 +62,9 @@ export class RegisterService {
       catchError(this.errorHandler));
   }
 
-  findByUsername(username: string): Observable<User>  {
-    return this.http.get<User>('http://localhost:8080/user/name/' + username).pipe(
+  findByUsername(username: string): Observable<User[]>  {
+    return this.http.get<User[]>('http://localhost:8080/user/').pipe(
+      map(users => users.filter(user => user.username === username)),
       catchError(this.errorHandler));
   }
 

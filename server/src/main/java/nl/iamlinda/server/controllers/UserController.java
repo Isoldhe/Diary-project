@@ -27,20 +27,6 @@ public class UserController {
         return userService.save(user).getId();
     }
 
-    // findByEmail from http://localhost:8080/user/{email}
-    @ResponseBody
-    @RequestMapping(value = "/user/email/{email}", method = RequestMethod.GET)
-    public List<User> findByEmail(@PathVariable String email) {
-        return userService.findByEmail(email);
-    }
-    
-    // findByUsername from http://localhost:8080/user/name/{username}
-    @ResponseBody
-    @RequestMapping(value = "/user/name/{username}", method = RequestMethod.GET)
-    public List<User> findByUsername(@PathVariable String username) {
-        return userService.findByUsername(username);
-    }
-
     //curl  http://localhost:8080/user
     @ResponseBody
     @RequestMapping(value = "/user", method = RequestMethod.GET)

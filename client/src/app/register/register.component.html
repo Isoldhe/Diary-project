@@ -56,6 +56,7 @@
            [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
       <div *ngIf="f.username.errors.required">Username is required</div>
+      <div *ngIf="f.username.errors.usernameTaken">This username has been taken</div>
     </div>
   </div>
 
