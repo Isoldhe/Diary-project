@@ -3,7 +3,7 @@
   <p>If you click 'yes' your account including all your posts won't be retrievable.</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">NO, don't delete my account</button>
-  <button mat-button (click)="onYesClick()" cdkFocusInitial>YES, delete my account</button>
+  <button class="noBtn" mat-button (click)="onNoClick()">NO, don't delete my account</button>
+  <button class="yesBtn" mat-button (click)="onYesClick()" cdkFocusInitial>YES, delete my account</button>
   <!-- [mat-dialog-close]="data.deleteAccount" -->
 </div>

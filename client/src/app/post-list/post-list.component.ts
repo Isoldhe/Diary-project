@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { PostService } from '../services/post.service';
 import { Post } from '../models/Post';
 import { User } from "../models/User";
@@ -28,6 +28,19 @@ export class PostListComponent implements OnInit {
 
   // Boolean for DeleteAccountDialog
   deleteAccount: boolean = false;
+  // config: MatDialogConfig = {
+  //   disableClose: false,
+  //   hasBackdrop: true,
+  //   backdropClass: '',
+  //   width: '600px',
+  //   height: '',
+  //   position: {
+  //       top: '',
+  //       bottom: '',
+  //       left: '',
+  //       right: ''
+  //   }
+  // }
 
   constructor(private postService: PostService,
               private registerService: RegisterService,
@@ -79,24 +92,33 @@ export class PostListComponent implements OnInit {
   // Open DeleteAccountDialog
   openDialog(): void {
     console.log("this.deleteAccount on open dialog = " + this.deleteAccount);
+
     const dialogRef = this.dialog.open(DeleteAccountDialogComponent, {
-      width: '250px',
+      disableClose: false,
+      autoFocus: false,
+      hasBackdrop: true,
+      backdropClass: '',
+      width: '600px',
+      height: '',
+      position: {
+          top: '',
+          bottom: '',
+          left: '',
+          right: ''
+      },
       data: {deleteAccount: this.deleteAccount}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       this.deleteAccount = result;
 
+      // If user clicks "yes, delete account", first deletes all his posts, then deletes user and navigates back to login page
       if (this.deleteAccount) {
-        console.log("User clicked 'yes'. Deleting all posts");
         const userId = this.currentUser.id;
         this.postService.deleteAllPosts(userId).subscribe(() => { 
           this.postService.getAllPosts();
           this.registerService.delete(userId).subscribe(() => this.router.navigate(['/login']));
         });
-      }
-      else {
-        console.log("User clicked 'no'. Doing nothing");
       }
     });
   }
