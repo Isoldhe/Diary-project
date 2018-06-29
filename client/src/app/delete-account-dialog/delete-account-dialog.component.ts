@@ -19,12 +19,13 @@ export class DeleteAccountDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.data.deleteAccount = false;
+    this.dialogRef.close(this.data.deleteAccount);
   }
 
   onYesClick() {
     this.data.deleteAccount = true;
-    this.dialogRef.close();
+    this.dialogRef.close(this.data.deleteAccount);
   }
 
 }

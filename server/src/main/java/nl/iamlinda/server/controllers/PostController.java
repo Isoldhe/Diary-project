@@ -57,5 +57,11 @@ public class PostController {
     public void delete(@PathVariable  int id) {
         postService.deleteById(id);
     }
+    
+    @ResponseStatus(value = HttpStatus.OK)
+    @RequestMapping(value = "/post/delete/{userId}", method = RequestMethod.DELETE)
+    public void deleteAllPosts(@PathVariable  int userId) {
+        postService.deleteByUserId(userId);
+    }
 }
 

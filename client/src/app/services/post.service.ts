@@ -64,8 +64,14 @@ export class PostService {
       catchError(this.errorHandler));
   }
 
+  // Deletes all posts from user
+  deleteAllPosts(userId) {
+    console.log("In deleteAllPosts from post service");
+    return this.http.delete('http://localhost:8080/post/delete/' + userId).pipe(
+      catchError(this.errorHandler));
+  }
+
   updatePost(id: number, post: Post) {
-    console.log('in updatepost' + id + post);
     return this.http.put('http://localhost:8080/post/' + id, post).pipe(
       catchError(this.errorHandler)
     );

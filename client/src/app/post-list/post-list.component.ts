@@ -85,6 +85,15 @@ export class PostListComponent implements OnInit {
       console.log("Delete account? " + result); // undefined
       this.deleteAccount = result;
       console.log("this.deleteAccount on close = " + this.deleteAccount); // undefined
+
+      if (this.deleteAccount) {
+        console.log("User clicked 'yes'. Deleting all posts");
+        const userId = this.currentUser.id;
+        this.postService.deleteAllPosts(userId).subscribe(() => this.postService.getAllPosts());
+      }
+      else {
+        console.log("User clicked 'no'. Doing nothing");
+      }
     });
   }
 

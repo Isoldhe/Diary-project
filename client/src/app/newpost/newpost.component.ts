@@ -35,8 +35,6 @@ export class NewpostComponent implements OnInit {
               private postService: PostService,
               private registerService: RegisterService,
               private router: Router) {
-                console.log("Smileys from constructor: " + this.smileyVeryHappy, this.smileySlightlyHappy, this.smileyNeutral, this.smileyAngry, this.smileySad);
-                console.log("Constructor done");
   }
 
   ngOnInit() {
@@ -48,8 +46,6 @@ export class NewpostComponent implements OnInit {
       date: ['', Validators.required],
       entry: ['', Validators.required]
     });
-    console.log("Smileys from ngOnInit: " + this.smileyVeryHappy, this.smileySlightlyHappy, this.smileyNeutral, this.smileyAngry, this.smileySad);
-    console.log("ngOnInit done");
   }
 
   // convenience getter for easy access to form fields
