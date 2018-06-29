@@ -40,7 +40,7 @@ public class UserController {
     }
     
     @ResponseStatus(value = HttpStatus.OK)
-    @RequestMapping(value = "/user/delete/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable  int id) {
         userService.deleteById(id);
     }

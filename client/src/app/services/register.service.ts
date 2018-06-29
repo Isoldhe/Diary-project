@@ -68,10 +68,10 @@ export class RegisterService {
       catchError(this.errorHandler));
   }
 
-  // delete(id) {
-  //   return this.http.delete('http://localhost:8080/user/' + id).pipe(
-  //     catchError(this.errorHandler));
-  // }
+  delete(id) {
+    return this.http.delete('http://localhost:8080/user/' + id).pipe(
+      catchError(this.errorHandler));
+  }
 
 
   // Login functions

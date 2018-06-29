@@ -4,6 +4,8 @@ import { PostService } from '../services/post.service';
 import { Post } from '../models/Post';
 import { User } from "../models/User";
 import { DeleteAccountDialogComponent } from '../delete-account-dialog/delete-account-dialog.component';
+import { RegisterService } from '../services/register.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-list',
@@ -28,6 +30,8 @@ export class PostListComponent implements OnInit {
   deleteAccount: boolean = false;
 
   constructor(private postService: PostService,
+              private registerService: RegisterService,
+              private router: Router,
               public dialog: MatDialog) {
     this.postService.eventCallback$.subscribe(data => {
       this.callbackFunction();
@@ -81,15 +85,15 @@ export class PostListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log("Delete account? " + result); // undefined
       this.deleteAccount = result;
-      console.log("this.deleteAccount on close = " + this.deleteAccount); // undefined
 
       if (this.deleteAccount) {
         console.log("User clicked 'yes'. Deleting all posts");
         const userId = this.currentUser.id;
-        this.postService.deleteAllPosts(userId).subscribe(() => this.postService.getAllPosts());
+        this.postService.deleteAllPosts(userId).subscribe(() => { 
+          this.postService.getAllPosts();
+          this.registerService.delete(userId).subscribe(() => this.router.navigate(['/login']));
+        });
       }
       else {
         console.log("User clicked 'no'. Doing nothing");
