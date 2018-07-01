@@ -4,6 +4,7 @@ import { PostService } from '../services/post.service';
 import { Post } from '../models/Post';
 import { User } from "../models/User";
 import { DeleteAccountDialogComponent } from '../delete-account-dialog/delete-account-dialog.component';
+import { DeletePostDialogComponent } from '../delete-post-dialog/delete-post-dialog.component';
 import { RegisterService } from '../services/register.service';
 import { Router } from '@angular/router';
 
@@ -28,19 +29,8 @@ export class PostListComponent implements OnInit {
 
   // Boolean for DeleteAccountDialog
   deleteAccount: boolean = false;
-  // config: MatDialogConfig = {
-  //   disableClose: false,
-  //   hasBackdrop: true,
-  //   backdropClass: '',
-  //   width: '600px',
-  //   height: '',
-  //   position: {
-  //       top: '',
-  //       bottom: '',
-  //       left: '',
-  //       right: ''
-  //   }
-  // }
+  // Boolean for DeletePostDialog
+  deletePost: boolean = false;
 
   constructor(private postService: PostService,
               private registerService: RegisterService,
@@ -90,7 +80,7 @@ export class PostListComponent implements OnInit {
   }
 
   // Open DeleteAccountDialog
-  openDialog(): void {
+  openDeleteAccountDialog(): void {
     console.log("this.deleteAccount on open dialog = " + this.deleteAccount);
 
     const dialogRef = this.dialog.open(DeleteAccountDialogComponent, {
@@ -122,6 +112,36 @@ export class PostListComponent implements OnInit {
       }
     });
   }
+
+    // Open DeletePostDialog
+    openDeletePostDialog(postId): void {
+      console.log("this.deletePost on open dialog = " + this.deletePost);
+  
+      const dialogRef = this.dialog.open(DeletePostDialogComponent, {
+        disableClose: false,
+        autoFocus: false,
+        hasBackdrop: true,
+        backdropClass: '',
+        width: '600px',
+        height: '',
+        position: {
+            top: '',
+            bottom: '',
+            left: '',
+            right: ''
+        },
+        data: {deletePost: this.deletePost}
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        this.deletePost = result;
+  
+        // If user clicks "yes", deletes the post
+        if (this.deletePost) {
+          this.delete(postId);
+        }
+      });
+    }
 
 
 }

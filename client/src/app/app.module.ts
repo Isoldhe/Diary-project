@@ -19,6 +19,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { ReversePipe } from './helpers/reversePipe';
 import { DeleteAccountDialogComponent } from './delete-account-dialog/delete-account-dialog.component';
+import { DeletePostDialogComponent } from './delete-post-dialog/delete-post-dialog.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { DeleteAccountDialogComponent } from './delete-account-dialog/delete-acc
     LoginComponent,
     PostDetailComponent,
     ReversePipe,
-    DeleteAccountDialogComponent
+    DeleteAccountDialogComponent,
+    DeletePostDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { DeleteAccountDialogComponent } from './delete-account-dialog/delete-acc
     BrowserAnimationsModule
   ],
   entryComponents: [
-    DeleteAccountDialogComponent
+    DeleteAccountDialogComponent,
+    DeletePostDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
