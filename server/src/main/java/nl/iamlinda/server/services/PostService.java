@@ -15,9 +15,6 @@ import java.util.List;
 public interface PostService extends CrudRepository<Post, Integer> {
     List<Post> findByUserId(int id);
     
-//    @Query("delete from Post u where userId = ?1")
-//    List<Post>
-    
     @Transactional
     @Modifying
     List<Post> deleteByUserId(int userId);

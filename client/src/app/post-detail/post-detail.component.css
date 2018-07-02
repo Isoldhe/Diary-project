@@ -47,6 +47,7 @@
 .postContainer {
   margin: 0 auto;
   margin-top: 20px;
+  margin-bottom: 20px;
   white-space: pre-wrap;  /* Preserves the line breaks */
 }
 

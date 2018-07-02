@@ -83,7 +83,7 @@ export class RegisterService {
       if(this.user.username == username) {
           if(this.user.password == password) {
             localStorage.setItem('currentUser', JSON.stringify(this.user));
-
+          
             // Login successful and AuthGuard's canActivate() returns true, so redirect to /home
             this.router.navigate(['/home']);
           } else {

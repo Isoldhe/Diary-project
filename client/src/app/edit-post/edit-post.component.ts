@@ -84,10 +84,11 @@ export class EditPostComponent implements OnInit, OnChanges {
   callbackFunction() {
     const id = +this.route.snapshot.paramMap.get('id');
     // When the post is found (findById), load it in the view with createForm() and rebuildForm()
-    this.postService.findById(id).subscribe(post => {this.post = post;
-                                                          this.createForm();
-                                                          this.rebuildForm();
-                                                          });
+    this.postService.findById(id).subscribe(post => {
+      this.post = post;
+      this.createForm();
+      this.rebuildForm();
+    });
   }
 
 }

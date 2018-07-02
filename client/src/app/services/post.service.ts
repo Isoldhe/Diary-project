@@ -54,7 +54,8 @@ export class PostService {
   }
 
   saveNewPost(post: Post) {
-    console.log('saved post = ' + post);
+    console.log('saved post = ');
+    console.log(post);
     return this.http.post('http://localhost:8080/post/', post).pipe(
       catchError(this.errorHandler));
   }

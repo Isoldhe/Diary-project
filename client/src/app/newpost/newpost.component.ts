@@ -1,9 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../services/post.service';
 import {Post} from '../models/Post';
 import {Router} from "@angular/router";
-import {RegisterService} from "../services/register.service";
 import {User} from "../models/User";
 
 @Component({
@@ -33,7 +32,6 @@ export class NewpostComponent implements OnInit {
 
   constructor(public fb: FormBuilder,
               private postService: PostService,
-              private registerService: RegisterService,
               private router: Router) {
   }
 

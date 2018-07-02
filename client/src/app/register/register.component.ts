@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../models/User';
-import {RegisterService} from '../services/register.service';
-import {FormBuilder, FormGroup, FormControl, Validators, AbstractControl} from '@angular/forms';
-import {Router} from '@angular/router';
-import {ValidateEmail} from '../validators/ValidateEmail';
-import {ValidateUsername} from '../validators/ValidateUsername';
+import { User } from '../models/User';
+import { RegisterService } from '../services/register.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ValidateEmail } from '../validators/ValidateEmail';
+import { ValidateUsername } from '../validators/ValidateUsername';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-register',
@@ -16,10 +17,9 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
-  user: User;
-
   constructor(public fb: FormBuilder,
               private registerService: RegisterService,
+              private sharedService: SharedService,
               private router: Router) { }
               
   ngOnInit() {
@@ -49,6 +49,9 @@ export class RegisterComponent implements OnInit {
     }
 
     // Subscribe with navigate at the end prevents async data load in login component after registration
-    this.registerService.saveUser(new User(0, firstName, lastName, email, username, password)).subscribe(() => this.router.navigate(['/login']));
+    this.registerService.saveUser(new User(0, firstName, lastName, email, username, password)).subscribe(() => {
+      this.sharedService.setFirstLogin(true);
+      this.router.navigate(['/login']);
+    });
   }
 }
