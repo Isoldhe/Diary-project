@@ -51,7 +51,7 @@
       </div>
       <div class="col">
         <label class="text-warning label">Date</label>
-        <input formControlName="date" type="date" class="form-control form-control-lg"
+        <input formControlName="date" type="date" class="date-form form-control form-control-lg"
                [ngClass]="{ 'is-invalid': submitted && f.date.errors }">
         <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
           <div *ngIf="f.date.errors.required">Date is required</div>

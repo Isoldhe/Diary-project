@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
       
 Ah! You clicked the title. Read on to see what you can do at Quacker.
 
-The homepage you came from is where you will see all your posts listed under each other, with your most recent posts at the top. Clicking the title will take you to this page where you can read the full contents of your post.
+The homepage you came from is where you will see all your diary posts listed under each other, with your most recent posts at the top. Clicking the title will take you to this page where you can read the full contents of your post.
       
 You can add a new post by clicking the Add New Post button in the top left. Enter a smiley, title, date and post content and click the Quack button. You will be returned to the home page where your new post will be visible at the top.
 You can delete and edit posts from the home page.
